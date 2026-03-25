@@ -1,0 +1,33 @@
+:root{
+    /* Colors */
+    --background-dark: #202020;
+    --background-light: #393939;
+
+    --color-accent: #4ec2ff;
+    --color-button-light: #3d3d3d;
+    --color-button-dark: #333333;
+
+    --color-text-white: #fefefe;
+    --color-text-muted: #4d4d4d;
+
+    /* Font size */
+    --text-sm: 1.6rem;
+    --text-md: 2rem;
+    --text-lg: 2.8rem;
+    --text-xl: 4rem;
+    
+    /* Padding */
+    --padding-sm: .8rem;
+    --padding-md: 1rem;
+    --padding-lg: 1.4rem;
+    --padding-xl: 1.8rem;
+    --padding-2xl: 2.2rem;
+
+    /* Border radius */
+    --rounded-sm: .4rem;
+    --rounded-md: .6rem;
+
+    /* Gap */
+    --gap-sm: .3rem;
+    --gap-md: .6rem;
+}
