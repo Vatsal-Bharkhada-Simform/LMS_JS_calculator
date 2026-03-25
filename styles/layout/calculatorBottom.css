@@ -1,0 +1,19 @@
+.body__bottom{
+
+    .dropdown-container{
+        display: flex;
+        gap: var(--gap-sm);
+        padding: var(--padding-sm) 0;
+
+        .dropdown-options{
+            display: none;
+        }
+    }
+
+    .body__buttons{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(7, 4.4rem);
+        gap: var(--gap-sm);
+    }
+}

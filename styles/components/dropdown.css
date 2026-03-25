@@ -1,0 +1,17 @@
+.dropdown{
+    .dropdown-label{
+        border: none;
+        display: inline-flex;
+        align-items: center;
+        gap: var(--gap-sm);
+        font-size: var(--text-sm);
+        background-color: var(--background-dark);
+        color: inherit;
+        padding: var(--padding-sm);
+        border-radius: var(--rounded-sm);
+
+        &:hover{
+            filter: brightness(130%);
+        }
+    }
+}

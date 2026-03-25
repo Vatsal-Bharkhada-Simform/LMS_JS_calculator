@@ -1,0 +1,23 @@
+.calculator__wrapper{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator{
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    padding: var(--padding-sm);
+    border-radius: var(--rounded-md);
+    background-color: var(--background-dark);
+
+    .calculator__body{
+        flex: 3;
+    }
+
+    .calculator__history{
+        flex: 2;
+    }
+}
