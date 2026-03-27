@@ -3,6 +3,7 @@
     width: var(--text-md);
     vertical-align: middle;
     aspect-ratio: 1/1;
+    pointer-events: none;
 }
 
 .u-icon-chevron{
