@@ -19,30 +19,33 @@ const operators = {
         precedence: 3,
         operands: 2
     },
-    "R": {
+    "√": {
         precedence: 4,
         operands: 1,
-        alias: "√"
     },
-    "L": {
+    "log": {
         precedence: 5,
         operands: 1,
-        alias: "log"
     },
-    "N": {
+    "ln": {
         precedence: 5,
         operands: 1,
-        alias: "N"
     },
-    "C": {
+    "⌈": {
         precedence: 6,
         operands: 1,
-        alias: "C"
     }, 
-    "M": {
+    "⌉": {
         precedence: 6,
         operands: 1,
-        alias: "M"
+    }, 
+    "|": {
+        precedence: 6,
+        operands: 1,
+    },
+    "UM": {
+        precedence: 7,
+        operands: 1
     },
     "!": {
         precedence: 7,
@@ -58,12 +61,9 @@ const operators = {
     },
 }
 
-const aliasMap = {
-    "log": "L",
-    "√": "R",
-    "ln": "N",
-    "⌈": "C",
-    "|": "M",
+const constants = {
+    "e" : Math.E,
+    "π" : Math.PI,
 }
 
-export {operators, aliasMap};
+export {operators, constants};

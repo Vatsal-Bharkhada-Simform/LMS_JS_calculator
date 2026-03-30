@@ -11,12 +11,30 @@ calculatorElements.buttonParent.addEventListener("click", (e) => {
     if (e.target.getAttribute("dataType") === "action") {
         calculator.handleAction(expressionData);
     } else {
-        calculator.updateTokens(displayData, expressionData);
+        calculator.updateString(displayData);
     }
 })
 
-// calculatorElements.display.addEventListener("input", (e) => {
-//     let input  = e.target.value;
-//     if(Number)
-//     console.log(e.target.value);
-// });
+calculatorElements.display.addEventListener("input", (e) => {
+    let inputString  = e.target.value;
+    calculator.setValue(inputString);
+});
+
+let prev = "";
+
+document.addEventListener("keydown", (e) => {
+    if(e.key === "Enter") {
+        calculator.calculateAnswer();
+    }
+    else if (e.key === "Escape"){
+        calculator.handleAction("clearDisplay");
+    } 
+    else if (prev === "Control" && e.key === "k") {
+        console.log("Heyy");
+        calculatorElements.display.focus;
+    } else {
+        prev = e.key;
+    }
+
+    // console.log(e);
+})
