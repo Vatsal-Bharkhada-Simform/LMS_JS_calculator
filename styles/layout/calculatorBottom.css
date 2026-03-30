@@ -1,4 +1,7 @@
 .body__bottom{
+    flex: 4;
+    display: flex;
+    flex-direction: column;
 
     .dropdown-container{
         display: flex;
@@ -11,9 +14,17 @@
     }
 
     .body__buttons{
+        flex: 1;
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        grid-template-rows: repeat(7, 4.4rem);
-        gap: var(--gap-sm);
+        grid-template-rows: repeat(7, 1fr);
+        gap: 2px;
+        align-items: start;
+        justify-items: start;
+
+        button {
+            min-width: 0;
+            overflow: hidden;
+        }
     }
 }

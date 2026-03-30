@@ -1,20 +1,18 @@
 .u-icon{
-    color: inherit;
     width: var(--text-md);
     vertical-align: middle;
-    aspect-ratio: 1/1;
 }
 
 .u-icon-chevron{
-    color: inherit;
     width: var(--text-sm);
     vertical-align: middle;
-    aspect-ratio: 1/1;
 }
 
 .u-icon-dropdown{
-    color: inherit;
     width: var(--text-sm);
-    /* vertical-align: middle; */
+}
+
+.u-icon, .u-icon-chevron, .u-icon-dropdown{
+    color: inherit;
     aspect-ratio: 1/1;
 }

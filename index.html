@@ -15,7 +15,7 @@
                     <div class="body__head">
                         <h1 class="body__head-title">Scientific</h1>
                         <button type="button" title="See History" aria-label="See History" class="history-toggle">
-                            <svg class="u-icon">
+                            <svg class="u-icon" aria-hidden="true">
                                 <use href="./assets/icons/sprite.svg#history"></use>
                             </svg>
                         </button>
@@ -35,13 +35,13 @@
                         <div class="dropdown">
                             <button type="button" class="dropdown-label">
                                 <span class="dropdown-icon">
-                                    <svg class="u-icon-dropdown">
+                                    <svg class="u-icon-dropdown" aria-hidden="true">
                                         <use href="./assets/icons/sprite.svg#trigonometry"></use>
                                     </svg>
                                 </span>
                                 <span class="dropdown-text">Trigonometry</span>
                                 <span class="u-chevron-down">
-                                    <svg class="u-icon-chevron">
+                                    <svg class="u-icon-chevron" aria-hidden="true">
                                         <use href="./assets/icons/sprite.svg#chevron-down"></use>
                                     </svg>
                                 </span>
@@ -66,7 +66,7 @@
                                 </span>
                                 <span class="dropdown-text">function</span>
                                 <span class="u-chevron-down">
-                                    <svg class="u-icon-chevron">
+                                    <svg class="u-icon-chevron" aria-hidden="true">
                                         <use href="./assets/icons/sprite.svg#chevron-down"></use>
                                     </svg>
                                 </span>
@@ -84,47 +84,47 @@
                         </div>
                     </div>
                     <div class="body__buttons">
-                        <div><button class="calculator-button button-dark" type="button" aria-label="second function">2<sup>nd</sup></button></div>
-                        <div><button class="calculator-button button-dark" type="button" aria-label="pi">&pi;</button></div>
-                        <div><button class="calculator-button button-dark" type="button" aria-label="euler number">e</button></div>
-                        <div><button class="calculator-button button-dark" type="button" aria-label="clear">C</button></div>
-                        <div><button class="calculator-button button-dark" type="button" aria-label="delete"><svg class="u-icon"><use href="./assets/icons/sprite.svg#delete"></use></svg></button></div>
+                        <button class="calculator-button button-dark" type="button" aria-label="second function">2<sup>nd</sup></button>
+                        <button class="calculator-button button-dark" type="button" aria-label="pi">&pi;</button>
+                        <button class="calculator-button button-dark" type="button" aria-label="euler number">e</button>
+                        <button class="calculator-button button-dark" type="button" aria-label="clear">C</button>
+                        <button class="calculator-button button-dark" type="button" aria-label="delete"><svg class="u-icon" aria-hidden="true"><use href="./assets/icons/sprite.svg#delete"></use></svg></button>
 
-                        <div><button class="calculator-button button-dark" type="button" aria-label="square">x²</button></div>
-                        <div><button class="calculator-button button-dark" type="button" aria-label="reciprocal">1/x</button></div>
-                        <div><button class="calculator-button button-dark" type="button" aria-label="ceiling">⌈x⌉</button></div>
-                        <div><button class="calculator-button button-dark" type="button" aria-label="exponential">exp</button></div>
-                        <div><button class="calculator-button button-dark" type="button" aria-label="modulo">mod</button></div>
+                        <button class="calculator-button button-dark" type="button" aria-label="square">x²</button>
+                        <button class="calculator-button button-dark" type="button" aria-label="reciprocal">1/x</button>
+                        <button class="calculator-button button-dark" type="button" aria-label="ceiling">⌈x⌉</button>
+                        <button class="calculator-button button-dark" type="button" aria-label="exponential">exp</button>
+                        <button class="calculator-button button-dark" type="button" aria-label="modulo">mod</button>
 
-                        <div><button class="calculator-button button-dark" type="button" aria-label="square root">√x</button></div>
-                        <div><button class="calculator-button button-dark" type="button" aria-label="open bracket">(</button></div>
-                        <div><button class="calculator-button button-dark" type="button" aria-label="close bracket">)</button></div>
-                        <div><button class="calculator-button button-dark" type="button" aria-label="factorial">x!</button></div>
-                        <div><button class="calculator-button button-dark" type="button" aria-label="divide">&divide;</button></div>
+                        <button class="calculator-button button-dark" type="button" aria-label="square root">√x</button>
+                        <button class="calculator-button button-dark" type="button" aria-label="open bracket">(</button>
+                        <button class="calculator-button button-dark" type="button" aria-label="close bracket">)</button>
+                        <button class="calculator-button button-dark" type="button" aria-label="factorial">x!</button>
+                        <button class="calculator-button button-dark" type="button" aria-label="divide">&divide;</button>
 
-                        <div><button class="calculator-button button-dark" type="button" aria-label="power">xʸ</button></div>
-                        <div><button class="calculator-button" type="button" aria-label="seven">7</button></div>
-                        <div><button class="calculator-button" type="button" aria-label="eight">8</button></div>
-                        <div><button class="calculator-button" type="button" aria-label="nine">9</button></div>
-                        <div><button class="calculator-button button-dark" type="button" aria-label="multiply">&times;</button></div>
+                        <button class="calculator-button button-dark" type="button" aria-label="power">xʸ</button>
+                        <button class="calculator-button" type="button" aria-label="seven">7</button>
+                        <button class="calculator-button" type="button" aria-label="eight">8</button>
+                        <button class="calculator-button" type="button" aria-label="nine">9</button>
+                        <button class="calculator-button button-dark" type="button" aria-label="multiply">&times;</button>
 
-                        <div><button class="calculator-button button-dark" type="button" aria-label="ten power">10ˣ</button></div>
-                        <div><button class="calculator-button" type="button" aria-label="four">4</button></div>
-                        <div><button class="calculator-button" type="button" aria-label="five">5</button></div>
-                        <div><button class="calculator-button" type="button" aria-label="six">6</button></div>
-                        <div><button class="calculator-button button-dark" type="button" aria-label="subtract">&minus;</button></div>
+                        <button class="calculator-button button-dark" type="button" aria-label="ten power">10ˣ</button>
+                        <button class="calculator-button" type="button" aria-label="four">4</button>
+                        <button class="calculator-button" type="button" aria-label="five">5</button>
+                        <button class="calculator-button" type="button" aria-label="six">6</button>
+                        <button class="calculator-button button-dark" type="button" aria-label="subtract">&minus;</button>
 
-                        <div><button class="calculator-button button-dark" type="button" aria-label="log base 10">log</button></div>
-                        <div><button class="calculator-button" type="button" aria-label="one">1</button></div>
-                        <div><button class="calculator-button" type="button" aria-label="two">2</button></div>
-                        <div><button class="calculator-button" type="button" aria-label="three">3</button></div>
-                        <div><button class="calculator-button button-dark" type="button" aria-label="add">&plus;</button></div>
+                        <button class="calculator-button button-dark" type="button" aria-label="log base 10">log</button>
+                        <button class="calculator-button" type="button" aria-label="one">1</button>
+                        <button class="calculator-button" type="button" aria-label="two">2</button>
+                        <button class="calculator-button" type="button" aria-label="three">3</button>
+                        <button class="calculator-button button-dark" type="button" aria-label="add">&plus;</button>
 
-                        <div><button class="calculator-button button-dark" type="button" aria-label="natural log">ln</button></div>
-                        <div><button class="calculator-button" type="button" aria-label="toggle sign">±</button></div>
-                        <div><button class="calculator-button" type="button" aria-label="zero">0</button></div>
-                        <div><button class="calculator-button" type="button" aria-label="decimal">.</button></div>
-                        <div><button class="calculator-button button-equals" type="button" aria-label="equals">&equals;</button></div>
+                        <button class="calculator-button button-dark" type="button" aria-label="natural log">ln</button>
+                        <button class="calculator-button" type="button" aria-label="toggle sign">±</button>
+                        <button class="calculator-button" type="button" aria-label="zero">0</button>
+                        <button class="calculator-button" type="button" aria-label="decimal">.</button>
+                        <button class="calculator-button button-equals" type="button" aria-label="equals">&equals;</button>
                     </div>
                 </div>
             </section>
