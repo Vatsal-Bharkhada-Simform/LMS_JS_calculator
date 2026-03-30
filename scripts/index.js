@@ -14,3 +14,9 @@ calculatorElements.buttonParent.addEventListener("click", (e) => {
         calculator.updateTokens(displayData, expressionData);
     }
 })
+
+// calculatorElements.display.addEventListener("input", (e) => {
+//     let input  = e.target.value;
+//     if(Number)
+//     console.log(e.target.value);
+// });
