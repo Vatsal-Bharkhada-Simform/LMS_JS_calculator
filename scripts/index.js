@@ -4,12 +4,11 @@ import calculator from "./modules/calculator.js";
 // Listen for click events on buttons.
 
 calculatorElements.buttonParent.addEventListener("click", (e) => {
-    let displayData = e.target.getAttribute("dataDisplay");
-    let expressionData = e.target.getAttribute("dataExpression");
+    let displayData = e.target.getAttribute("data-Display");
 
-    console.log(displayData, expressionData);
-    if (e.target.getAttribute("dataType") === "action") {
-        calculator.handleAction(expressionData);
+    console.log(displayData);
+    if (e.target.getAttribute("data-Type") === "action") {
+        calculator.handleAction(displayData);
     } else {
         calculator.updateString(displayData);
     }
@@ -31,7 +30,6 @@ document.addEventListener("keydown", (e) => {
     } 
     else if (prev === "Control" && e.key === "k") {
         console.log("Heyy");
-        calculatorElements.display.focus;
     } else {
         prev = e.key;
     }

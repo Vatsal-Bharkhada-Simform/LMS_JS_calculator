@@ -15,6 +15,10 @@ const operators = {
         precedence: 2,
         operands: 2
     },
+    "%": {
+        precedence: 2,
+        operands: 2
+    },
     "^": {
         precedence: 3,
         operands: 2
@@ -32,10 +36,6 @@ const operators = {
         operands: 1,
     },
     "⌈": {
-        precedence: 6,
-        operands: 1,
-    }, 
-    "⌉": {
         precedence: 6,
         operands: 1,
     }, 

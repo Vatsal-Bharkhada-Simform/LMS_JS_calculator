@@ -5,36 +5,22 @@ import { evaluate } from "./evaluateExpression.js";
 
 const calculator = {
     inputString: "",
-    isCeilAdded: false,
     isModuloAdded: false,
     setValue(str){
         this.inputString = str;
     },
     updateString(str){
         clearError();
-        if(str === "⌈") {
-            if(this.isCeilAdded){
-                this.inputString += "⌉";
-                this.isCeilAdded = false;
-            }
-            else {
-                this.inputString += str;
-                this.isCeilAdded = true;
-            }
-        } else {
-            this.inputString += str;
-        }
+        this.inputString += str ? str : "";
         updateDisplay(this.inputString);
     },
     handleAction(action){
         clearError();
         if(action === "clearDisplay"){
-            this.isCeilAdded = false;
-            this.isModuloAdded = false;
             this.inputString = "";
             updateDisplay(this.inputString);
         } else if (action === "clear"){
-            this.inputString = this.inputString.slice(0, this.inputString.length-1);
+            this.inputString = this.inputString.slice(0, -1);
             updateDisplay(this.inputString);
         } else if (action === "equals"){
             this.calculateAnswer();
