@@ -38,7 +38,7 @@
                     text-overflow: ellipsis;
 
                     &:first-child{
-                        color: var(--color-text-muted);
+                        color: var(--color-text-light);
                         font-size: var(--text-sm);
                     }
 
