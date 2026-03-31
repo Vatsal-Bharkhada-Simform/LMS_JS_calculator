@@ -1,3 +1,4 @@
+import calculatorElements from "../domElements/displayElements.js";
 import { updateDisplay } from "../utils/displayHandlers.js";
 import { clearError, showError } from "../utils/errorHandlers.js";
 import { evaluate } from "./evaluateExpression.js";
@@ -6,42 +7,106 @@ import { evaluate } from "./evaluateExpression.js";
 const calculator = {
     inputString: "",
     isModuloAdded: false,
-    setValue(str){
+    setValue(str) {
         this.inputString = str;
     },
-    updateString(str){
+    updateString(str) {
         clearError();
         this.inputString += str ? str : "";
         updateDisplay(this.inputString);
     },
-    handleAction(action){
+    handleAction(action) {
         clearError();
-        if(action === "clearDisplay"){
+        if (action === "clearDisplay") {
             this.inputString = "";
             updateDisplay(this.inputString);
-        } else if (action === "clear"){
+        } else if (action === "clear") {
             this.inputString = this.inputString.slice(0, -1);
             updateDisplay(this.inputString);
-        } else if (action === "equals"){
+        } else if (action === "equals") {
             this.calculateAnswer();
         }
     },
-    calculateAnswer(){
-        if(this.inputString === "") return;
+    calculateAnswer() {
+        if (this.inputString === "") return;
         try {
             let ans = evaluate(this.inputString);
-            if(ans !== undefined) {
+            if (ans !== undefined) {
                 this.updateHistory(this.inputString, ans);
                 updateDisplay(ans);
             }
             this.inputString = String(ans);
-        } catch (err){
+        } catch (err) {
             showError(err.message);
         }
     },
-    updateHistory(input, ans){
-        localStorage.setItem(input, ans);
-        const items = {...localStorage};
+    updateHistory(input, ans) {
+        let index = localStorage.getItem("index");
+        
+        if (!index) {
+            console.log("No index present!");
+            index = 0;
+        }
+        
+        let data = JSON.stringify({
+            input,
+            ans
+        });
+
+        localStorage.setItem(index, data);
+        index = +index + 1;
+        localStorage.setItem("index", index);
+
+        // Add new entry to history list
+        let listItem = document.createElement("li");
+
+        let query = document.createElement("span");
+        let answer = document.createElement("span");
+
+        query.innerText = input;
+        answer.innerText = ans;
+
+        listItem.append(query, answer);
+
+        calculatorElements.historyList.prepend(listItem);
+        return;
+    },
+    loadHistory() {
+        const index = localStorage.getItem("index");
+        if (!index || index === null || isNaN(+index)) {
+            localStorage.clear();
+            localStorage.setItem("index", 0);
+        }
+        console.log(index);
+
+        let listItems = new DocumentFragment();
+
+        for (let i = index; i >= 0; --i) {
+            let data = localStorage.getItem(i);
+            if (data === null) continue;
+            console.log(data);
+
+            try {
+                data = JSON.parse(data);
+            } catch (err) {
+                console.log(err);
+                return;
+            }
+
+            let listItem = document.createElement("li");
+
+            let query = document.createElement("span");
+            let answer = document.createElement("span");
+
+            query.innerText = data?.input;
+            answer.innerText = data?.ans;
+
+            listItem.append(query, answer);
+
+            listItems.append(listItem);
+        }
+
+        calculatorElements.historyList.append(listItems);
     }
 }
 

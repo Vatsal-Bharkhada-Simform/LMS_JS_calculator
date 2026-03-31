@@ -1,8 +1,10 @@
 import calculatorElements from "./domElements/displayElements.js";
 import calculator from "./modules/calculator.js";
 
-// Listen for click events on buttons.
+// Load history from localstorage.
+calculator.loadHistory();
 
+// Listen for click events on buttons.
 calculatorElements.buttonParent.addEventListener("click", (e) => {
     let displayData = e.target.getAttribute("data-Display");
 
@@ -14,12 +16,12 @@ calculatorElements.buttonParent.addEventListener("click", (e) => {
     }
 })
 
+// Listen user inputs
 calculatorElements.display.addEventListener("input", (e) => {
     let inputString  = e.target.value;
     calculator.setValue(inputString);
 });
 
-let prev = "";
 
 document.addEventListener("keydown", (e) => {
     if(e.key === "Enter") {
@@ -28,11 +30,7 @@ document.addEventListener("keydown", (e) => {
     else if (e.key === "Escape"){
         calculator.handleAction("clearDisplay");
     } 
-    else if (prev === "Control" && e.key === "k") {
-        console.log("Heyy");
-    } else {
-        prev = e.key;
+    else if (e.key === "=") {
+        calculator.calculateAnswer();
     }
-
-    // console.log(e);
 })
