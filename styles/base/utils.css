@@ -1,0 +1,18 @@
+.u-icon{
+    width: var(--text-md);
+    vertical-align: middle;
+}
+
+.u-icon-chevron{
+    width: var(--text-sm);
+    vertical-align: middle;
+}
+
+.u-icon-dropdown{
+    width: var(--text-sm);
+}
+
+.u-icon, .u-icon-chevron, .u-icon-dropdown{
+    color: inherit;
+    aspect-ratio: 1/1;
+}

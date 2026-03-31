@@ -1,0 +1,22 @@
+.calculator__history{
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-md);
+    padding: 0 var(--padding-sm);
+
+    .history__head{
+        padding: var(--padding-sm);
+    }
+
+    .history__list{
+
+        ul{
+            list-style-type: none;
+            
+            li {
+                padding: var(--padding-sm) var(--padding-lg);
+                font-size: var(--text-sm);
+            }
+        }
+    }
+}
