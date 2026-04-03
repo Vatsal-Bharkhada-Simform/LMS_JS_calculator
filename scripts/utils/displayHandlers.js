@@ -1,7 +1,7 @@
 import calculatorElements from "../domElements/displayElements.js";
 
 function updatePreview(content){
-    calculatorElements.previewScreen.innerHTML = content;
+    calculatorElements.previewScreen.innerText = content;
 }
 
 function updateDisplay(content){

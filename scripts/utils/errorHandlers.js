@@ -1,12 +1,12 @@
 import calculatorElements from "../domElements/displayElements.js";
 
 function showError(error){
-    calculatorElements.errorScreen.innerHTML = error;
+    calculatorElements.errorScreen.innerText = error;
     return;
 }
 
 function clearError(){
-    calculatorElements.errorScreen.innerHTML = "";
+    calculatorElements.errorScreen.innerText = "";
     return;
 }
 
