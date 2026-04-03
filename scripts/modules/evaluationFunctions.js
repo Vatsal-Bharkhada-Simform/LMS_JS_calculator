@@ -23,8 +23,8 @@ function evaluateBinaryOperators(op, b, a) {
 
 function factorial(n) {
     let ans = 1;
-    for (let i = n; i > 0; --i) ans *= i;
-    return ans;
+    for (let i = Math.abs(n); i > 0; --i) ans *= i;
+    return n > 0 ? ans : -1*ans;
 }
 
 export {evaluateUnaryOperators, evaluateBinaryOperators};

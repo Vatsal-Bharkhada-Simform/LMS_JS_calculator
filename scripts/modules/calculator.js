@@ -6,7 +6,6 @@ import { evaluate } from "./evaluateExpression.js";
 
 const calculator = {
     inputString: "",
-    isModuloAdded: false,
     setValue(str) {
         this.inputString = str;
     },
@@ -44,7 +43,6 @@ const calculator = {
         let index = localStorage.getItem("index");
         
         if (!index) {
-            console.log("No index present!");
             index = 0;
         }
         
@@ -77,19 +75,16 @@ const calculator = {
             localStorage.clear();
             localStorage.setItem("index", 0);
         }
-        console.log(index);
 
         let listItems = new DocumentFragment();
 
         for (let i = index; i >= 0; --i) {
             let data = localStorage.getItem(i);
             if (data === null) continue;
-            console.log(data);
 
             try {
                 data = JSON.parse(data);
             } catch (err) {
-                console.log(err);
                 return;
             }
 

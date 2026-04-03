@@ -9,12 +9,8 @@ function evaluate(str) {                                                        
         tokens = tokenizeExpression(str);                                               // Generate tokens
     } catch (err) {
         showError(err.message);
-        console.log(err);
         return;
     }
-
-    console.log(str);
-    console.log(tokens);
 
     let hStack = [];
     let oStack = [];
@@ -45,8 +41,6 @@ function evaluate(str) {                                                        
         oStack.push(hStack.pop());
     }
 
-    console.log(oStack);
-
     for (let i = 0; i < oStack.length; i++) {                                           // Evaluate the reverse polish notation.
         if (!isNaN(Number(oStack[i]))) result.push(oStack[i]);
         else {
@@ -62,7 +56,6 @@ function evaluate(str) {                                                        
 
     if(result.length > 1) throw new SyntaxError("Invalid expression.");
 
-    console.log(result[0]);
     return result[0];
 }
 

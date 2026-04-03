@@ -8,7 +8,6 @@ calculator.loadHistory();
 calculatorElements.buttonParent.addEventListener("click", (e) => {
     let displayData = e.target.getAttribute("data-Display");
 
-    console.log(displayData);
     if (e.target.getAttribute("data-Type") === "action") {
         calculator.handleAction(displayData);
     } else {

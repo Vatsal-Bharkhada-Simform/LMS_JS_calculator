@@ -48,7 +48,7 @@ function tokenizeExpression(str) {
 
         if (str[i] === '(') ++parenthesisIndex;
         else if (str[i] === ')') --parenthesisIndex;
-        else if (str[i] === '|') moduloIndex === 0 ? 1 : 0;
+        else if (str[i] === '|') moduloIndex = (moduloIndex === 0) ? 1 : 0;
     }
 
     if (curr !== "") tokens.push(curr);
