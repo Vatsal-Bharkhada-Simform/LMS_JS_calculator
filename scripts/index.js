@@ -20,6 +20,13 @@ calculatorElements.display.addEventListener("input", (e) => {
     calculator.updateString(e.data);
 });
 
+// Clear history
+calculatorElements.historyDelete.addEventListener("click", (e) => {
+    let answer = confirm("Delete history?");
+    if(answer) localStorage.clear();
+    calculatorElements.historyList.replaceChildren();
+})
+
 
 document.addEventListener("keydown", (e) => {
     if(e.key === "Enter") {

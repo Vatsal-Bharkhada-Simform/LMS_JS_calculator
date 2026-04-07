@@ -4,6 +4,7 @@ const calculatorElements = {
     buttonParent: document.querySelector(".body__buttons"),
     previewScreen: document.querySelector(".body__preview"),
     historyList: document.querySelector("#history__list"),
+    historyDelete: document.querySelector(".history-delete"),
 }
 
 Object.freeze(calculatorElements);

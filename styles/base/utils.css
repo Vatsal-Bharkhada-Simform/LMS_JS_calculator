@@ -15,4 +15,5 @@
 .u-icon, .u-icon-chevron, .u-icon-dropdown{
     color: inherit;
     aspect-ratio: 1/1;
+    pointer-events: none;
 }

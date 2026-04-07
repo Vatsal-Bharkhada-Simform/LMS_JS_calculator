@@ -8,6 +8,9 @@
 
     .history__head{
         padding: var(--padding-sm);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .history__wrapper{

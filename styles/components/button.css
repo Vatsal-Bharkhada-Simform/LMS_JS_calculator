@@ -1,4 +1,4 @@
-.history-toggle{
+.history-toggle, .history-delete{
     border: none;
     border-radius: var(--rounded-md);
     background-color: transparent;
