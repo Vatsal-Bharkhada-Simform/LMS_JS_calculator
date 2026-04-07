@@ -1,6 +1,7 @@
 @import "./base/base.css";
 @import "./base/variables.css";
 @import "./base/utils.css";
+@import "./base/animations.css";
 
 @import "./components/button.css";
 @import "./components/dropdown.css";

@@ -14,6 +14,10 @@
         .body__head-title{
             font-size: var(--text-lg); /* Based on the reference image */
         }
+
+        .history-toggle{
+            display: none;
+        }
     }
 
     .body__error-screen{
@@ -52,5 +56,16 @@
         justify-content: flex-end;
         align-items: center;
         padding: var(--padding-sm);
+    }
+}
+
+@media (max-width: 768px){
+    .body__top{
+        .body__head{
+
+            .history-toggle{
+                display: block;
+            }
+        }
     }
 }

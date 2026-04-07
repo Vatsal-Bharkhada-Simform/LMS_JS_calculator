@@ -32,6 +32,19 @@ calculatorElements.historyDelete.addEventListener("click", (e) => {
     calculatorElements.historyList.replaceChildren();
 })
 
+// Toggle history view
+calculatorElements.historyToggle.addEventListener("click", (e) => {
+    if(calculator.historyShown){
+        calculatorElements.historyContainer.classList.remove("show");
+        calculatorElements.historyContainer.classList.add("hide");
+        calculator.historyShown = false;
+    } else {
+        calculatorElements.historyContainer.classList.remove("hide");
+        calculatorElements.historyContainer.classList.add("show");
+        calculator.historyShown = true;
+    }
+})
+
 
 document.addEventListener("keydown", (e) => {
     if(e.key === "Enter") {

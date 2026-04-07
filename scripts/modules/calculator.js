@@ -7,6 +7,7 @@ import { evaluate } from "./evaluateExpression.js";
 const calculator = {
     inputString: "",
     displayHasAnswer: false,
+    historyShown: false,
     setValue(str) {
         this.inputString = str;
     },
