@@ -1,5 +1,6 @@
 import calculatorElements from "./domElements/displayElements.js";
 import calculator from "./modules/calculator.js";
+import { operators } from "./modules/operatorReference.js";
 
 // Load history from localstorage.
 calculator.loadHistory();
@@ -15,9 +16,13 @@ calculatorElements.buttonParent.addEventListener("click", (e) => {
     }
 })
 
-// Listen user inputs
+// Listen user inputs and filter out alphabets
 calculatorElements.display.addEventListener("input", (e) => {
-    calculator.updateString(e.data);
+    if(!isNaN(Number(e.data)) || operators[e.data] || e.data === ".") {
+        calculator.setValue(e.target.value);
+        return;
+    }
+    e.target.value = calculator.inputString;
 });
 
 // Clear history

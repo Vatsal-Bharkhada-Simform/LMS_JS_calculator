@@ -7,6 +7,9 @@ import { evaluate } from "./evaluateExpression.js";
 const calculator = {
     inputString: "",
     displayHasAnswer: false,
+    setValue(str) {
+        this.inputString = str;
+    },
     updateString(str) {
         if(this.displayHasAnswer) {
             this.displayHasAnswer = false;
@@ -45,61 +48,58 @@ const calculator = {
         }
     },
     updateHistory(input, ans) {
-        let index = localStorage.getItem("index");
-        
-        if (!index) {
-            index = 0;
+        let data = localStorage.getItem("historyList");
+        console.log(data);
+        if(!data){
+            localStorage.setItem("historyList", "[]");
+            return;
         }
+
+        let items = JSON.parse(data);
         
-        let data = JSON.stringify({
+        let newItem = {
             input,
             ans
-        });
+        };
 
-        localStorage.setItem(index, data);
-        index = +index + 1;
-        localStorage.setItem("index", index);
-
+        items.push(newItem);
+        
+        localStorage.setItem("historyList", JSON.stringify(items));
+        
         // Add new entry to history list
         let listItem = document.createElement("li");
-
+        
         let query = document.createElement("span");
         let answer = document.createElement("span");
 
         query.innerText = input;
         answer.innerText = ans;
-
+        
         listItem.append(query, answer);
 
         calculatorElements.historyList.prepend(listItem);
         return;
     },
     loadHistory() {
-        const index = localStorage.getItem("index");
-        if (!index || index === null || isNaN(+index)) {
-            localStorage.clear();
-            localStorage.setItem("index", 0);
+        let data = localStorage.getItem("historyList");
+        console.log(data);
+        if(!data){
+            localStorage.setItem("historyList", "[]");
+            return;
         }
+
+        let historyList = JSON.parse(data).reverse();
 
         let listItems = new DocumentFragment();
 
-        for (let i = index; i >= 0; --i) {
-            let data = localStorage.getItem(i);
-            if (data === null) continue;
-
-            try {
-                data = JSON.parse(data);
-            } catch (err) {
-                return;
-            }
-
+        for (let item of historyList) {
             let listItem = document.createElement("li");
 
             let query = document.createElement("span");
             let answer = document.createElement("span");
 
-            query.innerText = data?.input;
-            answer.innerText = data?.ans;
+            query.innerText = item?.input;
+            answer.innerText = item?.ans;
 
             listItem.append(query, answer);
 
