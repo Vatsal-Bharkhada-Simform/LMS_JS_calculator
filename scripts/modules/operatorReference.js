@@ -39,6 +39,10 @@ const operators = {
         precedence: 6,
         operands: 1,
     },
+    "UP": {
+        precedence: 7,
+        operands: 1
+    },
     "UM": {
         precedence: 7,
         operands: 1
