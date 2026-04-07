@@ -6,10 +6,14 @@ import { evaluate } from "./evaluateExpression.js";
 
 const calculator = {
     inputString: "",
-    setValue(str) {
-        this.inputString = str;
-    },
+    displayHasAnswer: false,
     updateString(str) {
+        if(this.displayHasAnswer) {
+            this.displayHasAnswer = false;
+            this.inputString = str;
+            updateDisplay(this.inputString);
+            return;
+        }
         clearError();
         this.inputString += str ? str : "";
         updateDisplay(this.inputString);
@@ -34,6 +38,7 @@ const calculator = {
                 this.updateHistory(this.inputString, ans);
                 updateDisplay(ans);
             }
+            this.displayHasAnswer = true;
             this.inputString = String(ans);
         } catch (err) {
             showError(err.message);

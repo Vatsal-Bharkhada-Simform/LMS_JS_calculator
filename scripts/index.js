@@ -17,8 +17,7 @@ calculatorElements.buttonParent.addEventListener("click", (e) => {
 
 // Listen user inputs
 calculatorElements.display.addEventListener("input", (e) => {
-    let inputString  = e.target.value;
-    calculator.setValue(inputString);
+    calculator.updateString(e.data);
 });
 
 
