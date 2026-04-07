@@ -39,11 +39,11 @@ function tokenizeExpression(str) {
                 tokens.push("log");
                 i += 2;
             } else {
-                throw new SyntaxError("Invalid expression.");
+                throw new SyntaxError("Invalid expression");
             }
         }
         else {                                                                  // Throw error if no checks are passed.
-            throw new SyntaxError("Invalid expression.");
+            throw new SyntaxError("Invalid expression");
         }
 
         if (str[i] === '(') ++parenthesisIndex;
@@ -54,7 +54,7 @@ function tokenizeExpression(str) {
     if (curr !== "") tokens.push(curr);
 
     if (parenthesisIndex || moduloIndex) {                                    // Throw error for uneven parenthesis pairs.
-        throw new SyntaxError("Invalid parenthesis.");
+        throw new SyntaxError("Invalid parenthesis");
     }
     return tokens;
 }

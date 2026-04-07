@@ -54,7 +54,7 @@ function evaluate(str) {                                                        
         }
     }
 
-    if(result.length > 1) throw new SyntaxError("Invalid expression.");
+    if(result.length > 1 || isNaN(result[0])) throw new SyntaxError("Invalid expression");
 
     return result[0];
 }

@@ -23,6 +23,7 @@
     .body__error-screen{
         height: 4rem;
         font-size: var(--text-sm);
+        color: #ff5151;
     }
     
     .body__display{
