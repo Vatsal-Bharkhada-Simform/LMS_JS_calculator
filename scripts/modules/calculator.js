@@ -51,12 +51,13 @@ const calculator = {
     updateHistory(input, ans) {
         let data = localStorage.getItem("historyList");
         console.log(data);
-        if(!data){
-            localStorage.setItem("historyList", "[]");
-            return;
-        }
+        let items;
 
-        let items = JSON.parse(data);
+        if(!data){
+            items = [];
+        } else {
+            items = JSON.parse(data);
+        }
         
         let newItem = {
             input,
