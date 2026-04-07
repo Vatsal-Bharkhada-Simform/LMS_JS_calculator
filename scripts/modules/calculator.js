@@ -19,7 +19,7 @@ const calculator = {
             return;
         }
         clearError();
-        this.inputString += str ? str : "";
+        this.inputString += (str || "");
         updateDisplay(this.inputString);
     },
     handleAction(action) {

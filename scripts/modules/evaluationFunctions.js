@@ -6,7 +6,6 @@ function evaluateUnaryOperators(op, a) {
         case "ln": return Math.log(a);
         case "|": return Math.abs(a);
         case "!": return factorial(a);
-        case "⌉": return a;
     }
 }
 

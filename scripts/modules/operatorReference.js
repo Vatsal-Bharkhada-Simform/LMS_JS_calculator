@@ -35,10 +35,6 @@ const operators = {
         precedence: 5,
         operands: 1,
     },
-    "⌈": {
-        precedence: 6,
-        operands: 1,
-    }, 
     "|": {
         precedence: 6,
         operands: 1,
