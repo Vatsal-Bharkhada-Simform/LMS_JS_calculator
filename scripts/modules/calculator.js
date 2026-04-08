@@ -32,7 +32,7 @@ const calculator = {
             updateDisplay(this.inputString);
         } else if (action === "equals") {
             this.calculateAnswer();
-        }
+        } 
     },
     calculateAnswer() {
         if (this.inputString === "") return;
@@ -54,11 +54,13 @@ const calculator = {
         let items;
 
         if(!data){
+            calculatorElements.emptyMessage.style.display = "flex";
             items = [];
         } else {
+            calculatorElements.emptyMessage.style.display = "none";
             items = JSON.parse(data);
         }
-        
+
         let newItem = {
             input,
             ans
@@ -85,10 +87,12 @@ const calculator = {
     loadHistory() {
         let data = localStorage.getItem("historyList");
         console.log(data);
-        if(!data){
+        if(!data || data === "[]"){
             localStorage.setItem("historyList", "[]");
+            calculatorElements.emptyMessage.style.display = "flex";
             return;
         }
+        calculatorElements.emptyMessage.style.display = "none";
 
         let historyList = JSON.parse(data).reverse();
 

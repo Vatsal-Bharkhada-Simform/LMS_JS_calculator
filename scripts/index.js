@@ -29,7 +29,8 @@ calculatorElements.display.addEventListener("input", (e) => {
 calculatorElements.historyDelete.addEventListener("click", (e) => {
     let answer = confirm("Delete history?");
     if(answer) localStorage.clear();
-    calculatorElements.historyList.replaceChildren();
+    calculatorElements.historyList.replaceChildren(calculatorElements.emptyMessage);
+    calculatorElements.emptyMessage.style.display = "flex";
 })
 
 // Toggle history view

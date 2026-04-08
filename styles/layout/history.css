@@ -1,4 +1,4 @@
-.calculator__history{
+.calculator__history {
     display: flex;
     flex-direction: column;
     gap: var(--gap-md);
@@ -7,26 +7,41 @@
     min-width: 0;
     background-color: var(--background-dark);
 
-    .history__head{
+    .history__head {
         padding: var(--padding-sm);
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
-    .history__wrapper{
+    .history__wrapper {
         flex: 1;
         min-height: 0;
         overflow-y: auto;
         max-width: 100%;
         overflow-x: hidden;
 
-        #history__list{
+        .history__list {
             list-style-type: none;
             display: flex;
             flex-direction: column;
             gap: var(--gap-md);
-            
+            height: 100%;
+
+            .empty_message {
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: inherit;
+                color: var(--color-text-muted);
+
+                img {
+                    mix-blend-mode: screen;
+                    filter: invert(100%) grayscale() brightness(180%);
+                }
+            }
+
             li {
                 display: flex;
                 flex-direction: column;
@@ -36,17 +51,17 @@
                 font-size: var(--text-sm);
                 border-radius: var(--rounded-md);
 
-                span{
+                span {
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
 
-                    &:first-child{
+                    &:first-child {
                         color: var(--color-text-light);
                         font-size: var(--text-sm);
                     }
 
-                    &:last-child{
+                    &:last-child {
                         font-size: var(--text-lg);
                         font-weight: 600;
                     }
@@ -54,19 +69,19 @@
             }
         }
 
-        &::-webkit-scrollbar{
+        &::-webkit-scrollbar {
             width: 5px;
         }
-        
-        &::-webkit-scrollbar-thumb{
+
+        &::-webkit-scrollbar-thumb {
             background-color: var(--color-text-muted);
             border-radius: var(--rounded-md);
         }
     }
 }
 
-@media (max-width: 768px){
-    .calculator__history{
+@media (max-width: 768px) {
+    .calculator__history {
         position: absolute;
         left: 0;
         z-index: 2;
@@ -77,11 +92,11 @@
         border-radius: var(--rounded-md) var(--rounded-md) 0 0;
     }
 
-    .show{
-        animation: slide-in .4s ease forwards;
+    .show {
+        animation: slide-in 0.4s ease forwards;
     }
-    
-    .hide{
-        animation: slide-out .4s ease forwards;
+
+    .hide {
+        animation: slide-out 0.4s ease forwards;
     }
 }
