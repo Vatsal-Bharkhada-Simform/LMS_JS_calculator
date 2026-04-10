@@ -27,8 +27,7 @@ calculatorElements.display.addEventListener("input", (e) => {
 
 // Clear history
 calculatorElements.historyDelete.addEventListener("click", (e) => {
-    let answer = confirm("Delete history?");
-    if(answer) localStorage.clear();
+    localStorage.clear();
     calculatorElements.historyList.replaceChildren(calculatorElements.emptyMessage);
     calculatorElements.emptyMessage.style.display = "flex";
 })
@@ -48,6 +47,7 @@ calculatorElements.historyToggle.addEventListener("click", (e) => {
 
 
 document.addEventListener("keydown", (e) => {
+    if(e.key !== "Tab") calculatorElements.display.focus();
     if(e.key === "Enter") {
         calculator.calculateAnswer();
     }
