@@ -7,8 +7,11 @@ function tokenizeExpression(str) {
     let tokens = [];
 
     for (let i = 0; i < str.length; i++) {
-        if ((str[i] === "-" || str[i] === "+") && curr === "" && (i === 0 || operators[tokens.at(-1)] !== undefined || str[i - 1] === "|")) {
-            tokens.push(str[i] === '-' ? "UM" : "UP");                                    // Unary minus operator
+        if ((str[i] === "-" || str[i] === "+" || str[i] === "!") && curr === "" && (i === 0 || operators[tokens.at(-1)] !== undefined || str[i - 1] === "|")) {
+            if(str[i] === "!"){
+                throw new SyntaxError("Wrong placement of factorial");
+            }
+            tokens.push(str[i] === '-' ? "UM" : "UP");                          // Unary minus operator
         }
         else if (operators[str[i]] !== undefined) {                             // If operator is encountered check for 
             if (curr !== "") {                                                  // non-empty curr and aliases and add them to tokens array.
