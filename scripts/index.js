@@ -11,18 +11,32 @@ calculatorElements.buttonParent.addEventListener("click", (e) => {
 
     if (e.target.getAttribute("data-Type") === "action") {
         calculator.handleAction(displayData);
-    } else {
+    } 
+    else if (calculator.inputString === "" && e.target.getAttribute("data-Type") === "function-pre") {
+        calculator.handleFunction(displayData);
+    } 
+    else {
         calculator.updateString(displayData);
     }
 })
 
 // Listen user inputs and filter out alphabets
 calculatorElements.display.addEventListener("input", (e) => {
+
     if(!isNaN(Number(e.data)) || operators[e.data] || e.data === ".") {
-        calculator.setValue(e.target.value);
+        if(calculator.displayHasAnswer){
+            if(operators[e.data]?.precedence !== undefined){
+                calculator.setValue(e.data);
+            } else {
+                calculator.setValue(e.target.value);
+            }
+            calculator.displayHasAnswer = false;
+        } else {
+            calculator.setValue(e.target.value);
+        }
+        e.target.value = calculator.inputString;
         return;
     }
-    e.target.value = calculator.inputString;
 });
 
 // Clear history

@@ -22,6 +22,17 @@ const calculator = {
         this.inputString += (str || "");
         updateDisplay(this.inputString);
     },
+    handleFunction(func){
+        let num = "";
+        let i = this.inputString.length-1;
+        let hasParenthesis = func.includes("(");
+        while(this.inputString[i] >= "0" && this.inputString[i] <= "9"){
+            num = this.inputString[i] + num;
+            i--;
+        }
+        this.inputString = this.inputString.slice(0,i+1) + func + this.inputString.slice(i+1) + (hasParenthesis ? ")" : "");
+        updateDisplay(this.inputString);
+    },
     handleAction(action) {
         clearError();
         if (action === "clearDisplay") {
@@ -50,7 +61,6 @@ const calculator = {
     },
     updateHistory(input, ans) {
         let data = localStorage.getItem("historyList");
-        console.log(data);
         let items;
 
         if(!data){
@@ -86,7 +96,6 @@ const calculator = {
     },
     loadHistory() {
         let data = localStorage.getItem("historyList");
-        console.log(data);
         if(!data || data === "[]"){
             localStorage.setItem("historyList", "[]");
             calculatorElements.emptyMessage.style.display = "flex";
