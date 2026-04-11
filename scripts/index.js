@@ -12,7 +12,7 @@ calculatorElements.buttonParent.addEventListener("click", (e) => {
     if (e.target.getAttribute("data-Type") === "action") {
         calculator.handleAction(displayData);
     } 
-    else if (calculator.inputString === "" && e.target.getAttribute("data-Type") === "function-pre") {
+    else if (e.target.getAttribute("data-Type") === "function-pre") {
         calculator.handleFunction(displayData);
     } 
     else {
@@ -34,9 +34,8 @@ calculatorElements.display.addEventListener("input", (e) => {
         } else {
             calculator.setValue(e.target.value);
         }
-        e.target.value = calculator.inputString;
-        return;
     }
+    e.target.value = calculator.inputString;
 });
 
 // Clear history
