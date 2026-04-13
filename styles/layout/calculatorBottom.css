@@ -7,10 +7,6 @@
         display: flex;
         gap: var(--gap-sm);
         padding: var(--padding-sm) 0;
-
-        .dropdown-options{
-            display: none;
-        }
     }
 
     .body__buttons{

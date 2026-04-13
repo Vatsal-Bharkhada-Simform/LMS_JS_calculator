@@ -12,12 +12,14 @@
     --color-text-muted: #747474;
 
     /* Font size */
+    --text-xs: 1.4rem;
     --text-sm: 1.6rem;
     --text-md: 2rem;
     --text-lg: 2.8rem;
     --text-xl: 4rem;
     
     /* Padding */
+    --padding-xs: .4rem;
     --padding-sm: .8rem;
     --padding-md: 1rem;
     --padding-lg: 1.4rem;
