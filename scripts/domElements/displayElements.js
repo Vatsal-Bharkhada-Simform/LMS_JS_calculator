@@ -8,6 +8,7 @@ const calculatorElements = {
     historyToggle: document.querySelector(".history-toggle"),
     historyDelete: document.querySelector(".history-delete"),
     emptyMessage: document.querySelector(".empty_message"),
+    dropdownContainer: document.querySelector(".dropdown-container"),
 }
 
 Object.freeze(calculatorElements);

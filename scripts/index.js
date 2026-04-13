@@ -1,30 +1,25 @@
 import calculatorElements from "./domElements/displayElements.js";
 import calculator from "./modules/calculator.js";
 import { operators } from "./modules/operatorReference.js";
+import handleInsertion from "./utils/insertionHandler.js";
 
 // Load history from localstorage.
 calculator.loadHistory();
 
 // Listen for click events on buttons.
 calculatorElements.buttonParent.addEventListener("click", (e) => {
-    let displayData = e.target.getAttribute("data-Display");
+    handleInsertion(
+        e.target.getAttribute("data-Type"), 
+        e.target.getAttribute("data-Display")
+    );
+});
 
-    if (e.target.getAttribute("data-Type") === "action") {
-        calculator.handleAction(displayData);
-    } 
-    else if (e.target.getAttribute("data-Type") === "function-pre") {
-        calculator.handleFunction(displayData);
-    } 
-    else if (e.target.getAttribute("data-Type") === "function-post") {
-        calculator.handlePostFunction(displayData);
-    } 
-    else if (e.target.getAttribute("data-Type") === "sign-toggle") {
-        calculator.handleSignToggle(displayData);
-    } 
-    else {
-        calculator.updateString(displayData);
-    }
-})
+calculatorElements.dropdownContainer.addEventListener("click", (e) => {
+    handleInsertion(
+        e.target.getAttribute("data-Type"), 
+        e.target.getAttribute("data-Display")
+    );
+});
 
 // Listen user inputs and filter out alphabets
 calculatorElements.display.addEventListener("input", (e) => {
@@ -39,7 +34,7 @@ calculatorElements.historyDelete.addEventListener("click", (e) => {
     localStorage.clear();
     calculatorElements.historyList.replaceChildren(calculatorElements.emptyMessage);
     calculatorElements.emptyMessage.style.display = "flex";
-})
+});
 
 // Toggle history view
 calculatorElements.historyToggle.addEventListener("click", (e) => {
@@ -52,7 +47,7 @@ calculatorElements.historyToggle.addEventListener("click", (e) => {
         calculatorElements.historyContainer.classList.add("show");
         calculator.historyShown = true;
     }
-})
+});
 
 
 document.addEventListener("keydown", (e) => {
@@ -69,4 +64,4 @@ document.addEventListener("keydown", (e) => {
     else if (e.key === "=") {
         calculator.calculateAnswer();
     }
-})
+});
