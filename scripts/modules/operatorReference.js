@@ -35,7 +35,39 @@ const operators = {
         precedence: 5,
         operands: 1,
     },
-    "|": {
+    "sin": {
+        precedence: 5,
+        operands: 1,
+    },
+    "cos": {
+        precedence: 5,
+        operands: 1,
+    },
+    "tan": {
+        precedence: 5,
+        operands: 1,
+    },
+    "asin": {
+        precedence: 5,
+        operands: 1,
+    },
+    "acos": {
+        precedence: 5,
+        operands: 1,
+    },
+    "atan": {
+        precedence: 5,
+        operands: 1,
+    },
+    "mod": {
+        precedence: 6,
+        operands: 1,
+    },
+    "floor": {
+        precedence: 6,
+        operands: 1,
+    },
+    "ceil": {
         precedence: 6,
         operands: 1,
     },

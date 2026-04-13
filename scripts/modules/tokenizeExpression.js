@@ -1,16 +1,16 @@
 import { handleUnaryOperators } from "../utils/expressionHandlers.js";
 
 function tokenizeExpression(str){
-    const TOKEN_REGEX = /asin|acos|atan|log|ln|sin|cos|tan|pi|e|\d*\.\d+|\d+|[()+\-*/^,]/gi;
+    const TOKEN_REGEX = /asin|acos|atan|log|ln|sin|cos|tan|pi|e|√|\d*\.\d+|\d+|[()+\-*/^,]/gi;
 
-    let tokens = str.match(TOKEN_REGEX);
-    console.log(tokens);
-    if(tokens.join("").length !== str.length){
+    let unfilteredTokens = str.match(TOKEN_REGEX);
+    if(unfilteredTokens.join("").length !== str.length){
         throw new SyntaxError("Invalid expression");
     }
-    handleUnaryOperators(tokens);
-
-    return tokens || [];
+    const filteredTokens = handleUnaryOperators(unfilteredTokens);
+    console.log(filteredTokens);
+    
+    return filteredTokens || [];
 }
 
 // function tokenizeExpression(str) {

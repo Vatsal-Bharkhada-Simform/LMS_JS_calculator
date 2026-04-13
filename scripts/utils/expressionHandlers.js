@@ -2,7 +2,7 @@ import { operators } from "../modules/operatorReference.js";
 
 function handleUnaryOperators(tokens){
     for(let i = 0 ; i < tokens.length ; i++){
-        if ((tokens[i] === "-" || tokens[i] === "+" || tokens[i] === "!") && (i === 0 || operators[tokens[i-1]]?.precedence !== undefined || tokens[i - 1] === "|")) {
+        if ((tokens[i] === "-" || tokens[i] === "+" || tokens[i] === "!") && (i === 0 || operators[tokens[i-1]]?.precedence !== undefined || tokens[i - 1] === "|" || tokens[i - 1] === "")) {
             if(tokens[i] === "!"){
                 throw new SyntaxError("Wrong placement of factorial");
             }
@@ -14,6 +14,8 @@ function handleUnaryOperators(tokens){
             }
         }
     }
+
+    return tokens.filter(token => token !== "");
 }
 
 export { handleUnaryOperators };
