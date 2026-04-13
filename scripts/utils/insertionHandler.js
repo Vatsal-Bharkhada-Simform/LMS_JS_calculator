@@ -9,6 +9,9 @@ function handleInsertion(dataType, data) {
     else if (dataType === "function-pre") {
         calculator.handleFunction(data);
     }
+    else if (dataType === "function-post") {
+        calculator.handlePostFunction(data);
+    }
     else {
         calculator.updateString(data);
     }

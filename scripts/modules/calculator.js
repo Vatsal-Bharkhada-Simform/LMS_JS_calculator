@@ -74,6 +74,22 @@ const calculator = {
         this.inputString = toggleSign(this.inputString);
         updateDisplay(this.inputString);
     },
+    handlePostFunction(func){
+        if (this.inputString === "") return;
+        try {
+            let ans = evaluate(this.inputString);
+            if (ans !== undefined) {
+                ans = evaluateUnaryOperators(func, ans);
+
+                this.updateHistory(this.inputString, ans);
+                updateDisplay(ans);
+            }
+            this.displayHasAnswer = true;
+            this.inputString = String(ans);
+        } catch (err) {
+            showError(err.message);
+        }
+    },
     handleAction(action) {
         clearError();
         if (action === "clearDisplay") {

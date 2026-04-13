@@ -10,7 +10,8 @@ function evaluateUnaryOperators(op, a) {
         case "asin": return Math.asin(a);
         case "acos": return Math.acos(a);
         case "atan": return Math.atan(a);
-        case "mod": return Math.abs(a);
+        case "|": return Math.abs(a);
+        case "round": return Math.round(a);
         case "floor": return Math.floor(a);
         case "ceil": return Math.ceil(a);
         case "!": return factorial(a);
