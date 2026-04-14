@@ -12,6 +12,9 @@ function handleInsertion(dataType, data) {
     else if (dataType === "function-post") {
         calculator.handlePostFunction(data);
     }
+    else if (dataType === "random") {
+        calculator.updateString(Math.round(Math.random()*100)/100);
+    }
     else {
         calculator.updateString(data);
     }
