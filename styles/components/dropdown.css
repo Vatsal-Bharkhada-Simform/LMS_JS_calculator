@@ -44,10 +44,37 @@
             gap: var(--gap-sm);
             list-style-type: none;
 
+            li {
+                display: block;
+            }
+
             li button {
                 width: 100%;
                 height: 100%;
                 font-size: var(--text-xs);
+            }
+
+            .inverse-function {
+                display: none;
+            }
+        }
+
+        .show-invert{
+            li {
+                display: none;
+            }
+
+            .active{
+                background-color: var(--color-accent);
+                color: var(--background-dark);
+            }
+
+            .inverse-toggle{
+                display: block;
+            }
+            
+            .inverse-function {
+                display: block;
             }
         }
 

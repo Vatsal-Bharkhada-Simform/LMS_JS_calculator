@@ -65,3 +65,8 @@ document.addEventListener("keydown", (e) => {
         calculator.calculateAnswer();
     }
 });
+
+calculatorElements.invertTrigonometry.addEventListener("click", (e) => {
+    calculatorElements.invertTrigonometry.classList.toggle("active");
+    calculatorElements.trigonometryList.classList.toggle("show-invert");
+})

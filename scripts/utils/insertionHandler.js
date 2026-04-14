@@ -1,7 +1,7 @@
 import calculator from "../modules/calculator.js";
 
 function handleInsertion(dataType, data) {
-    if (!data) return;
+    if (!data || dataType === "utility") return;
 
     if (dataType === "action") {
         calculator.handleAction(data);

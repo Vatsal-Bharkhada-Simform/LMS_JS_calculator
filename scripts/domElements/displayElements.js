@@ -9,6 +9,8 @@ const calculatorElements = {
     historyDelete: document.querySelector(".history-delete"),
     emptyMessage: document.querySelector(".empty_message"),
     dropdownContainer: document.querySelector(".dropdown-container"),
+    invertTrigonometry: document.querySelector("#invert-trignometry"),
+    trigonometryList: document.querySelector("#trigonometry-list"),
 }
 
 Object.freeze(calculatorElements);
