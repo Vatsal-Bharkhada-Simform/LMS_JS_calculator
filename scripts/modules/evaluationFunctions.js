@@ -16,6 +16,8 @@ function evaluateUnaryOperators(op, a) {
         case "floor": return Math.floor(a);
         case "ceil": return Math.ceil(a);
         case "!": return factorial(a);
+        default:
+            throw new Error("Unknown operator encountered");
     }
 }
 
@@ -27,6 +29,8 @@ function evaluateBinaryOperators(op, b, a) {
         case "/": return a / b;
         case "^": return a ** b;
         case "%": return a % b;
+        default:
+            throw new Error("Unknown operator encountered");
     }
 }
 
