@@ -81,19 +81,21 @@
                         </div>
                     </div>
                     <div class="body__buttons">
-                        <button data-Type="" data-Display="" class="calculator-button button-dark" type="button" aria-label="second function">2<sup>nd</sup></button>
+                        <button id="invert-function" data-Type="utility" data-Display="" class="calculator-button button-dark" type="button" aria-label="second function">2<sup>nd</sup></button>
                         <button data-Type="constant" data-Display="π" class="calculator-button button-dark" type="button" aria-label="pi">π</button>
                         <button data-Type="constant" data-Display="e" class="calculator-button button-dark" type="button" aria-label="euler number">e</button>
                         <button data-Type="action" data-Display="clearDisplay" class="calculator-button button-dark" type="button" aria-label="clear">C</button>
                         <button data-Type="action" data-Display="clear" class="calculator-button button-dark" type="button" aria-label="delete"><svg class="u-icon"><use href="./assets/icons/sprite.svg#delete"></use></svg></button>
 
-                        <button data-Type="function" data-Display="^2"  class="calculator-button button-dark" type="button" aria-label="square">x²</button>
+                        <button data-Type="function" data-Display="^2"  class="calculator-button button-dark default" type="button" aria-label="square">x²</button>
+                        <button data-Type="function" data-Display="^3"  class="calculator-button button-dark inverse" type="button" aria-label="cube">x³</button>
                         <button data-Type="function-pre" data-Display="1/(" class="calculator-button button-dark" type="button" aria-label="reciprocal">1/x</button>
                         <button data-Type="function-post" data-Display="|" class="calculator-button button-dark" type="button" aria-label="ceiling">|x|</button>
                         <button data-Type="function-pre" data-Display="*10^" class="calculator-button button-dark" type="button" aria-label="exponential">exp</button>
                         <button data-Type="function" data-Display="%" class="calculator-button button-dark" type="button" aria-label="modulo">mod</button>
 
-                        <button data-Type="function-pre" data-Display="√(" class="calculator-button button-dark" type="button" aria-label="square root">√x</button>
+                        <button data-Type="function-pre" data-Display="√(" class="calculator-button button-dark default" type="button" aria-label="square root">√x</button>
+                        <button data-Type="function-pre" data-Display="³√(" class="calculator-button button-dark inverse" type="button" aria-label="cube root">³√x</button>
                         <button data-Type="operator" data-Display="(" class="calculator-button button-dark" type="button" aria-label="open bracket">(</button>
                         <button data-Type="operator" data-Display=")" class="calculator-button button-dark" type="button" aria-label="close bracket">)</button>
                         <button data-Type="function" data-Display="!" class="calculator-button button-dark" type="button" aria-label="factorial">x!</button>
@@ -105,7 +107,8 @@
                         <button data-Type="digit" data-Display="9" class="calculator-button" type="button" aria-label="nine">9</button>
                         <button data-Type="operator" data-Display="*" class="calculator-button button-dark" type="button" aria-label="multiply">&times;</button>
 
-                        <button data-Type="function-pre" data-Display="10^" class="calculator-button button-dark" type="button" aria-label="ten power">10ˣ</button>
+                        <button data-Type="function-pre" data-Display="10^" class="calculator-button button-dark default" type="button" aria-label="ten power">10ˣ</button>
+                        <button data-Type="function-pre" data-Display="2^" class="calculator-button button-dark inverse" type="button" aria-label="two power">2ˣ</button>
                         <button data-Type="digit" data-Display="4" class="calculator-button" type="button" aria-label="four">4</button>
                         <button data-Type="digit" data-Display="5" class="calculator-button" type="button" aria-label="five">5</button>
                         <button data-Type="digit" data-Display="6" class="calculator-button" type="button" aria-label="six">6</button>

@@ -27,6 +27,10 @@ const operators = {
         precedence: 4,
         operands: 1,
     },
+    "³√": {
+        precedence: 4,
+        operands: 1,
+    },
     "log": {
         precedence: 5,
         operands: 1,

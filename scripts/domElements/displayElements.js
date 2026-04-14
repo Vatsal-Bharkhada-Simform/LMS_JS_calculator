@@ -11,6 +11,7 @@ const calculatorElements = {
     dropdownContainer: document.querySelector(".dropdown-container"),
     invertTrigonometry: document.querySelector("#invert-trignometry"),
     trigonometryList: document.querySelector("#trigonometry-list"),
+    invertButton: document.querySelector("#invert-function"),
 }
 
 Object.freeze(calculatorElements);

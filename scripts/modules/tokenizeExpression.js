@@ -1,7 +1,7 @@
 import { handleUnaryOperators } from "../utils/expressionHandlers.js";
 
 function tokenizeExpression(str){
-    const TOKEN_REGEX = /asin|acos|atan|log|ln|sin|cos|tan|pi|e|√|\d*\.\d+|\d+|[()+\-*/^,]/gi;
+    const TOKEN_REGEX = /asin|acos|atan|log|ln|sin|cos|tan|pi|!|e|√|³√|\d*\.\d+|\d+|[()+\-*/^,]/gi;
 
     let unfilteredTokens = str.match(TOKEN_REGEX);
     if(unfilteredTokens.join("").length !== str.length){

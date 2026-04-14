@@ -23,5 +23,24 @@
             min-width: 0;
             overflow: hidden;
         }
+
+        .active{
+            background-color: var(--color-accent);
+            color: var(--background-dark);
+        }
+
+        .inverse{
+            display: none;
+        }
+    }
+
+    .show-inverse{
+        .inverse{
+            display: block;
+        }
+
+        .default{
+            display: none;
+        }
     }
 }

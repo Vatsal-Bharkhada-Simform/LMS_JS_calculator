@@ -70,3 +70,8 @@ calculatorElements.invertTrigonometry.addEventListener("click", (e) => {
     calculatorElements.invertTrigonometry.classList.toggle("active");
     calculatorElements.trigonometryList.classList.toggle("show-invert");
 })
+
+calculatorElements.invertButton.addEventListener("click", () => {
+    calculatorElements.invertButton.classList.toggle("active");
+    calculatorElements.buttonParent.classList.toggle("show-inverse");
+})
