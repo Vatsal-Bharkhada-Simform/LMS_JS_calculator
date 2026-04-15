@@ -1,8 +1,8 @@
 import calculatorElements from "../domElements/displayElements.js";
 import { updateDisplay } from "../utils/displayHandlers.js";
 import { clearError, showError } from "../utils/errorHandlers.js";
+import toggleSign from "../utils/toggleSign.js";
 import { evaluate } from "./evaluateExpression.js";
-
 
 const calculator = {
     inputString: "",
@@ -12,7 +12,7 @@ const calculator = {
         this.inputString = str;
     },
     updateString(str) {
-        if(this.displayHasAnswer) {
+        if (this.displayHasAnswer) {
             this.displayHasAnswer = false;
             this.inputString = str;
             updateDisplay(this.inputString);
@@ -22,15 +22,19 @@ const calculator = {
         this.inputString += (str || "");
         updateDisplay(this.inputString);
     },
-    handleFunction(func){
+    handleFunction(func) {
         let num = "";
-        let i = this.inputString.length-1;
+        let i = this.inputString.length - 1;
         let hasParenthesis = func.includes("(");
-        while(this.inputString[i] >= "0" && this.inputString[i] <= "9"){
+        while (this.inputString[i] >= "0" && this.inputString[i] <= "9") {
             num = this.inputString[i] + num;
             i--;
         }
-        this.inputString = this.inputString.slice(0,i+1) + func + this.inputString.slice(i+1) + (hasParenthesis ? ")" : "");
+        this.inputString = this.inputString.slice(0, i + 1) + func + this.inputString.slice(i + 1) + (hasParenthesis ? ")" : "");
+        updateDisplay(this.inputString);
+    },
+    handleSignToggle() {
+        this.inputString = toggleSign(this.inputString);
         updateDisplay(this.inputString);
     },
     handleAction(action) {
@@ -43,7 +47,7 @@ const calculator = {
             updateDisplay(this.inputString);
         } else if (action === "equals") {
             this.calculateAnswer();
-        } 
+        }
     },
     calculateAnswer() {
         if (this.inputString === "") return;
@@ -63,7 +67,7 @@ const calculator = {
         let data = localStorage.getItem("historyList");
         let items;
 
-        if(!data){
+        if (!data) {
             calculatorElements.emptyMessage.style.display = "flex";
             items = [];
         } else {
@@ -77,18 +81,18 @@ const calculator = {
         };
 
         items.push(newItem);
-        
+
         localStorage.setItem("historyList", JSON.stringify(items));
-        
+
         // Add new entry to history list
         let listItem = document.createElement("li");
-        
+
         let query = document.createElement("span");
         let answer = document.createElement("span");
 
         query.innerText = input;
         answer.innerText = ans;
-        
+
         listItem.append(query, answer);
 
         calculatorElements.historyList.prepend(listItem);
@@ -96,7 +100,7 @@ const calculator = {
     },
     loadHistory() {
         let data = localStorage.getItem("historyList");
-        if(!data || data === "[]"){
+        if (!data || data === "[]") {
             localStorage.setItem("historyList", "[]");
             calculatorElements.emptyMessage.style.display = "flex";
             return;
