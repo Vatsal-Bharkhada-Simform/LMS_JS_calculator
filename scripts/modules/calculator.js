@@ -3,6 +3,7 @@ import { updateDisplay } from "../utils/displayHandlers.js";
 import { clearError, showError } from "../utils/errorHandlers.js";
 import toggleSign from "../utils/toggleSign.js";
 import { evaluate } from "./evaluateExpression.js";
+import { evaluateUnaryOperators } from "./evaluationFunctions.js";
 import { operators, parenthesis } from "./operatorReference.js";
 
 const calculator = {
@@ -37,6 +38,22 @@ const calculator = {
         }
         this.inputString = this.inputString.slice(0, i + 1) + func + this.inputString.slice(i + 1) + (hasParenthesis ? ")" : "");
         updateDisplay(this.inputString);
+    },
+    handlePostFunction(func){
+        if (this.inputString === "") return;
+        try {
+            let ans = evaluate(this.inputString);
+            if (ans !== undefined) {
+                ans = evaluateUnaryOperators(func, ans);
+
+                this.updateHistory(this.inputString, ans);
+                updateDisplay(ans);
+            }
+            this.displayHasAnswer = true;
+            this.inputString = String(ans);
+        } catch (err) {
+            showError(err.message);
+        }
     },
     handleSignToggle() {
         this.inputString = toggleSign(this.inputString);

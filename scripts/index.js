@@ -15,6 +15,9 @@ calculatorElements.buttonParent.addEventListener("click", (e) => {
     else if (e.target.getAttribute("data-Type") === "function-pre") {
         calculator.handleFunction(displayData);
     } 
+    else if (e.target.getAttribute("data-Type") === "function-post") {
+        calculator.handlePostFunction(displayData);
+    } 
     else if (e.target.getAttribute("data-Type") === "sign-toggle") {
         calculator.handleSignToggle(displayData);
     } 
