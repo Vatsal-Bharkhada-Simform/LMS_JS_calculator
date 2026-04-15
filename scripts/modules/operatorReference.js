@@ -65,5 +65,6 @@ const constants = {
     "e" : Math.E,
     "π" : Math.PI,
 }
+const parenthesis = ["(", ")", "|"];
 
-export {operators, constants};
+export {operators, constants, parenthesis};

@@ -25,18 +25,10 @@ calculatorElements.buttonParent.addEventListener("click", (e) => {
 
 // Listen user inputs and filter out alphabets
 calculatorElements.display.addEventListener("input", (e) => {
-
-    if(!isNaN(Number(e.data)) || operators[e.data] || e.data === ".") {
-        if(calculator.displayHasAnswer){
-            if(operators[e.data]?.precedence !== undefined){
-                calculator.setValue(e.data);
-            } else {
-                calculator.setValue(e.target.value);
-            }
-            calculator.displayHasAnswer = false;
-        } else {
-            calculator.setValue(e.target.value);
-        }
+    console.log(e.data);
+    console.log(!isNaN(Number(e.data)));
+    if(e.data && (!isNaN(Number(e.data)) || operators[e.data] || e.data === ".")) {
+        calculator.setValue(e.target.value);
     }
     e.target.value = calculator.inputString.trim();
 });
@@ -69,6 +61,9 @@ document.addEventListener("keydown", (e) => {
     }
     else if (e.key === "Escape"){
         calculator.handleAction("clearDisplay");
+    } 
+    else if (e.key === "Backspace"){
+        calculator.handleAction("clear");
     } 
     else if (e.key === "=") {
         calculator.calculateAnswer();

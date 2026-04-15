@@ -3,22 +3,27 @@ import { updateDisplay } from "../utils/displayHandlers.js";
 import { clearError, showError } from "../utils/errorHandlers.js";
 import toggleSign from "../utils/toggleSign.js";
 import { evaluate } from "./evaluateExpression.js";
+import { operators, parenthesis } from "./operatorReference.js";
 
 const calculator = {
     inputString: "",
     displayHasAnswer: false,
     historyShown: false,
     setValue(str) {
-        this.inputString = str;
+        this.updateString(str.at(-1));
     },
     updateString(str) {
         if (this.displayHasAnswer) {
             this.displayHasAnswer = false;
-            this.inputString = str;
-            updateDisplay(this.inputString);
-            return;
+            if(!operators[str]) {
+                this.inputString = str;
+                updateDisplay(this.inputString);
+                return;
+            }
         }
         clearError();
+        // console.log(parenthesis.includes(str));
+        if(!(parenthesis.includes(str)) && (operators[this.inputString.at(-1)] && operators[str])) return;
         this.inputString += (str || "");
         updateDisplay(this.inputString);
     },
