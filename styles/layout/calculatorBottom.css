@@ -21,6 +21,7 @@
         gap: 2px;
         align-items: start;
         justify-items: start;
+        padding: var(--padding-sm);
 
         button {
             min-width: 0;

@@ -14,16 +14,21 @@
         .body__head-title{
             font-size: var(--text-lg); /* Based on the reference image */
         }
+
+        .history-toggle{
+            display: none;
+        }
     }
 
     .body__error-screen{
         height: 4rem;
-        vertical-align: middle;
+        font-size: var(--text-sm);
+        color: #ff5151;
     }
-
+    
     .body__display{
         padding: var(--padding-xl) var(--padding-sm);
-
+        
         input{
             width: 100%;
             border: none;
@@ -34,14 +39,34 @@
             text-align: right;
             background-color: inherit;
             color: var(--color-text-white);
-
+            
             &::placeholder{
                 color: var(--color-text-white);
             }
         }
     }
-
+    
     .body__preview{
         height: 4rem;
+        font-size: var(--text-md);
+        color: var(--color-text-muted);
+    }
+
+    .body__error-screen, .body__preview{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: var(--padding-sm);
+    }
+}
+
+@media (max-width: 768px){
+    .body__top{
+        .body__head{
+
+            .history-toggle{
+                display: block;
+            }
+        }
     }
 }

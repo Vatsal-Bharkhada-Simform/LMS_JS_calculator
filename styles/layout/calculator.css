@@ -7,12 +7,15 @@
 
 .calculator{
     display: flex;
+    position: relative;
     width: 100%;
     max-width: 1000px;
     height: 600px;
     padding: var(--padding-sm);
+    margin: 0 var(--padding-sm);
     border-radius: var(--rounded-md);
     background-color: var(--background-dark);
+    overflow: hidden;
 
     .calculator__body{
         flex: 3;
