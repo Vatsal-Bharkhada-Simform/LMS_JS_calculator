@@ -1,6 +1,7 @@
 import calculatorElements from "../domElements/displayElements.js";
 import { updateDisplay } from "../utils/displayHandlers.js";
 import { clearError, showError } from "../utils/errorHandlers.js";
+import { wrapLastElement } from "../utils/insertionHelpers.js";
 import toggleSign from "../utils/toggleSign.js";
 import { evaluate } from "./evaluateExpression.js";
 import { evaluateUnaryOperators } from "./evaluationFunctions.js";
@@ -34,24 +35,15 @@ const calculator = {
                 return;
             }
         }
+        // console.log(this.inputString);
         if(str === "." && this.inputString.at(-1) === ".") return;
-        if(!(parenthesis.includes(str)) && (operators[this.inputString.at(-1)] && operators[str])) return;
+        if((!parenthesis.includes(str)) && (operators[this.inputString.at(-1)]?.precedence && operators[str]?.precedence)) return;
         this.inputString += (str || "");
         updateDisplay(this.inputString);
     },
     handleFunction(func) {
-        let num = "";
-        let i = this.inputString.length - 1;
         let hasParenthesis = func.includes("(");
-        while ((this.inputString[i] >= "0" && this.inputString[i] <= "9") || this.inputString[i] === ".") {
-            num = this.inputString[i] + num;
-            i--;
-        }
-        if(isNaN(+num)) {
-            showError("Error in wrapping function.");
-            return;
-        }
-        this.inputString = this.inputString.slice(0, i + 1) + func + this.inputString.slice(i + 1) + ((hasParenthesis && num !== "") ? ")" : "");
+        this.inputString = wrapLastElement(this.inputString, func, hasParenthesis && ")");
         updateDisplay(this.inputString);
     },
     handlePostFunction(func){
@@ -71,6 +63,7 @@ const calculator = {
         }
     },
     handleSignToggle() {
+        if(!this.inputString) return;
         this.inputString = toggleSign(this.inputString);
         updateDisplay(this.inputString);
     },

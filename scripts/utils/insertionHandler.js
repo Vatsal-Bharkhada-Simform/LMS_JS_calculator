@@ -12,8 +12,11 @@ function handleInsertion(dataType, data) {
     else if (dataType === "function-post") {
         calculator.handlePostFunction(data);
     }
+    else if (dataType === "sign-toggle") {
+        calculator.handleSignToggle(data);
+    }
     else if (dataType === "random") {
-        calculator.updateString(Math.round(Math.random()*100)/100);
+        calculator.updateString(String(Math.round(Math.random()*100)/100));
     }
     else {
         calculator.updateString(data);
