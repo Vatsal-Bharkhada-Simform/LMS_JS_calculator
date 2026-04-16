@@ -28,8 +28,6 @@ calculatorElements.buttonParent.addEventListener("click", (e) => {
 
 // Listen user inputs and filter out alphabets
 calculatorElements.display.addEventListener("input", (e) => {
-    console.log(e.data);
-    console.log(!isNaN(Number(e.data)));
     if(e.data && (!isNaN(Number(e.data)) || operators[e.data] || e.data === ".")) {
         calculator.setValue(e.target.value);
     }

@@ -28,7 +28,6 @@ function toggleSign(str) {
             str = "(-" + str + ")";
         }
         else {
-            console.log("YH");
             str = str.slice(0, i) + "(-" + str.slice(i) + ")";
         }
     }

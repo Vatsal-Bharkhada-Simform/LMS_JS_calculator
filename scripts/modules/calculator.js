@@ -11,9 +11,7 @@ const calculator = {
     displayHasAnswer: false,
     historyShown: false,
     setValue(str) {
-        this.updateString(str.at(-1));
-    },
-    updateString(str) {
+        clearError();
         if (this.displayHasAnswer) {
             this.displayHasAnswer = false;
             if(!operators[str]) {
@@ -22,8 +20,21 @@ const calculator = {
                 return;
             }
         }
+        if(str.at(-1) === "." && this.inputString.at(-1) === ".") return;
+        this.inputString = str;
+        updateDisplay(this.inputString);
+    },
+    updateString(str) {
         clearError();
-        // console.log(parenthesis.includes(str));
+        if (this.displayHasAnswer) {
+            this.displayHasAnswer = false;
+            if(!operators[str]) {
+                this.inputString = str;
+                updateDisplay(this.inputString);
+                return;
+            }
+        }
+        if(str === "." && this.inputString.at(-1) === ".") return;
         if(!(parenthesis.includes(str)) && (operators[this.inputString.at(-1)] && operators[str])) return;
         this.inputString += (str || "");
         updateDisplay(this.inputString);
@@ -32,11 +43,15 @@ const calculator = {
         let num = "";
         let i = this.inputString.length - 1;
         let hasParenthesis = func.includes("(");
-        while (this.inputString[i] >= "0" && this.inputString[i] <= "9") {
+        while ((this.inputString[i] >= "0" && this.inputString[i] <= "9") || this.inputString[i] === ".") {
             num = this.inputString[i] + num;
             i--;
         }
-        this.inputString = this.inputString.slice(0, i + 1) + func + this.inputString.slice(i + 1) + (hasParenthesis ? ")" : "");
+        if(isNaN(+num)) {
+            showError("Error in wrapping function.");
+            return;
+        }
+        this.inputString = this.inputString.slice(0, i + 1) + func + this.inputString.slice(i + 1) + ((hasParenthesis && num !== "") ? ")" : "");
         updateDisplay(this.inputString);
     },
     handlePostFunction(func){
