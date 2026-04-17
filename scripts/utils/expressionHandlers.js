@@ -10,7 +10,7 @@ function handleUnaryOperators(tokens){
                 tokens[i] = "UM";
             }
             else{
-                tokens[i] = "";
+                tokens[i] = ""; // Removing unary plus as it has no significance
             }
         }
     }

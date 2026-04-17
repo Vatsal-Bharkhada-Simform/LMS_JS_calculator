@@ -8,7 +8,6 @@ function tokenizeExpression(str){
         throw new SyntaxError("Invalid expression");
     }
     const filteredTokens = handleUnaryOperators(unfilteredTokens);
-    console.log(filteredTokens);
     
     return filteredTokens || [];
 }

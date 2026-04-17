@@ -1,10 +1,11 @@
 import calculatorElements from "./domElements/displayElements.js";
 import calculator from "./modules/calculator.js";
 import { operators } from "./modules/operatorReference.js";
+import { loadHistory } from "./utils/historyHandlers.js";
 import handleInsertion from "./utils/insertionHandler.js";
 
 // Load history from localstorage.
-calculator.loadHistory();
+loadHistory();
 
 // Listen for click events on buttons.
 calculatorElements.buttonParent.addEventListener("click", (e) => {
@@ -52,18 +53,8 @@ calculatorElements.historyToggle.addEventListener("click", (e) => {
 
 document.addEventListener("keydown", (e) => {
     if(e.key !== "Tab") calculatorElements.display.focus();
-    if(e.key === "Enter") {
-        calculator.calculateAnswer();
-    }
-    else if (e.key === "Escape"){
-        calculator.handleAction("clearDisplay");
-    } 
-    else if (e.key === "Backspace"){
-        calculator.handleAction("clear");
-    } 
-    else if (e.key === "=") {
-        calculator.calculateAnswer();
-    }
+
+    calculator.handleAction(e.key);
 });
 
 calculatorElements.invertTrigonometry.addEventListener("click", (e) => {
