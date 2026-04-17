@@ -23,7 +23,7 @@ const operators = {
         precedence: 3,
         operands: 2
     },
-    "√": {
+    "²√": {
         precedence: 4,
         operands: 1,
     },
@@ -66,10 +66,6 @@ const operators = {
     "|": {
         precedence: 6,
         operands: 1,
-    },
-    "UP": {
-        precedence: 7,
-        operands: 1
     },
     "UM": {
         precedence: 7,

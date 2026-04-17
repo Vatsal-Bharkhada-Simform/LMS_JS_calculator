@@ -1,7 +1,7 @@
 function evaluateUnaryOperators(op, a) {
     switch (op) {
         case "UM": return (a === "UM") ? 1 : a * -1;
-        case "√": return Math.sqrt(a);
+        case "²√": return Math.sqrt(a);
         case "³√": return Math.cbrt(a);
         case "log": return Math.log10(a);
         case "ln": return Math.log(a);
