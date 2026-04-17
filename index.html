@@ -26,8 +26,16 @@
                     <div class="body__display">
                         <input type="text" placeholder="0" name="query-string" class="display-input" id="display" autofocus autocomplete="false">
                     </div>
-                    <div class="body__preview">
-                        <!-- Text injected throuhg JavaScript -->
+                    <div class="body__button-container button-modes">
+                        <button type="button" class="button-secondary" data-Type="DEG" title="Toggle degree/Radian">DEG</button>
+                        <button type="button" class="button-secondary" data-Type="FE" title="Toggle exponent format">F-E</button>
+                    </div>
+                    <div class="body__button-container button-memory">
+                        <button type="button" class="button-secondary active" data-Type="MC" title="Clear memory">MC</button>
+                        <button type="button" class="button-secondary" data-Type="MR" title="Insert memory value" disabled>MR</button>
+                        <button type="button" class="button-secondary" data-Type="M+" title="Add to memory value">M+</button>
+                        <button type="button" class="button-secondary" data-Type="M-" title="Subtract from memory value">M-</button>
+                        <button type="button" class="button-secondary" data-Type="MS" title="Store current value in memory">MS</button>
                     </div>
                 </div>
                 <div class="body__bottom">
