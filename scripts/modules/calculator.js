@@ -11,6 +11,7 @@ const calculator = {
     inputString: "",
     displayHasAnswer: false,
     useRadian: false,
+    showScientificNotation: false,
     historyShown: false,
     setValue(str) {
         clearError();
@@ -45,12 +46,9 @@ const calculator = {
                 if((!ans && ans !== 0) || isNaN(ans)){
                     throw new SyntaxError("Error while evaluating function");
                 } else {
-                    updateHistory(this.inputString, ans);
-                    updateDisplay(ans);
+                    this.handleDisplayAnswer(ans);
                 }
             }
-            this.displayHasAnswer = true;
-            this.inputString = String(ans);
         } catch (err) {
             showError(err.message);
         }
@@ -88,11 +86,8 @@ const calculator = {
         try {
             let ans = evaluate(this.inputString);
             if (ans !== undefined) {
-                updateHistory(this.inputString, ans);
-                updateDisplay(ans);
+                this.handleDisplayAnswer(ans);
             }
-            this.displayHasAnswer = true;
-            this.inputString = String(ans);
         } catch (err) {
             showError(err.message);
         }
@@ -108,6 +103,21 @@ const calculator = {
             ans = (ans / 57.2958);
         }
         return evaluateUnaryOperators(func, ans);
+    },
+    toggleNotation(elem){
+        this.showScientificNotation = !this.showScientificNotation;
+        elem.innerText = (elem.innerText === "F" ? "E" : "F");
+        elem.setAttribute("title", (`Showing answer in ${(elem.innerText === "F") ? "regular" : "scientific"} notation`));
+    },
+    handleDisplayAnswer(ans){
+        if(this.showScientificNotation){
+            ans = Number(ans).toExponential();
+        }
+        updateHistory(this.inputString, ans);
+        updateDisplay(ans);
+
+        this.displayHasAnswer = true;
+        this.inputString = String(ans);
     }
 }
 

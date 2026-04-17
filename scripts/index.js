@@ -76,3 +76,7 @@ calculatorElements.memoryButtons.addEventListener("click", (e) => {
 calculatorElements.degreeButton.addEventListener("click", (e) => {
     calculator.toggleUseRadian(e.target);
 })
+
+calculatorElements.notationButton.addEventListener("click", (e) => {
+    calculator.toggleNotation(e.target);
+})
