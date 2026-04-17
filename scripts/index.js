@@ -1,5 +1,6 @@
 import calculatorElements from "./domElements/displayElements.js";
 import calculator from "./modules/calculator.js";
+import { handleMemoryInput } from "./modules/memory.js";
 import { operators } from "./modules/operatorReference.js";
 import { loadHistory } from "./utils/historyHandlers.js";
 import handleInsertion from "./utils/insertionHandler.js";
@@ -65,4 +66,9 @@ calculatorElements.invertTrigonometry.addEventListener("click", (e) => {
 calculatorElements.invertButton.addEventListener("click", () => {
     calculatorElements.invertButton.classList.toggle("active");
     calculatorElements.buttonParent.classList.toggle("show-inverse");
+})
+
+calculatorElements.memoryButtons.addEventListener("click", (e) => {
+    let type = e.target.getAttribute("data-Type");
+    type && handleMemoryInput(type);
 })

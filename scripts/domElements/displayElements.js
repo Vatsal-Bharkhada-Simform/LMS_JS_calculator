@@ -12,6 +12,10 @@ const calculatorElements = {
     invertTrigonometry: document.querySelector("#invert-trignometry"),
     trigonometryList: document.querySelector("#trigonometry-list"),
     invertButton: document.querySelector("#invert-function"),
+    modeButtons: document.querySelector(".button-modes"),
+    memoryButtons: document.querySelector(".button-memory"),
+    memoryClear: document.querySelector("[data-Type='MC']"),
+    memoryRead: document.querySelector("[data-Type='MR']"),
 }
 
 Object.freeze(calculatorElements);
