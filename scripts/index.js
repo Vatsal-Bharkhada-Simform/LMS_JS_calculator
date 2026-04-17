@@ -72,3 +72,7 @@ calculatorElements.memoryButtons.addEventListener("click", (e) => {
     let type = e.target.getAttribute("data-Type");
     type && handleMemoryInput(type);
 })
+
+calculatorElements.degreeButton.addEventListener("click", (e) => {
+    calculator.toggleUseRadian(e.target);
+})

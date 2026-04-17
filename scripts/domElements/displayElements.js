@@ -16,6 +16,7 @@ const calculatorElements = {
     memoryButtons: document.querySelector(".button-memory"),
     memoryClear: document.querySelector("[data-Type='MC']"),
     memoryRead: document.querySelector("[data-Type='MR']"),
+    degreeButton: document.querySelector("[data-Type='DEG']"),
 }
 
 Object.freeze(calculatorElements);

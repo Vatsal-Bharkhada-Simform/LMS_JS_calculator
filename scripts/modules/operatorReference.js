@@ -91,4 +91,6 @@ const constants = {
 }
 const parenthesis = ["(", ")", "|"];
 
-export {operators, constants, parenthesis};
+const trigonometricFunctions = ["sin", "cos", "tan", "asin", "acos", "atan"];
+
+export {operators, constants, parenthesis, trigonometricFunctions};
