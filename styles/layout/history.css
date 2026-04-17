@@ -37,6 +37,7 @@
                 color: var(--color-text-muted);
 
                 img {
+                    width: 60%;
                     mix-blend-mode: screen;
                     filter: invert(100%) grayscale() brightness(180%);
                 }
