@@ -1,7 +1,7 @@
 import { updateDisplay, updatePreview } from "../utils/displayHandlers.js";
 import { clearError, showError } from "../utils/errorHandlers.js";
 import { updateHistory } from "../utils/historyHandlers.js";
-import { isValidInput, wrapLastElement } from "../utils/insertionHelpers.js";
+import { validateInput, wrapLastElement } from "../utils/insertionHelpers.js";
 import toggleSign from "../utils/toggleSign.js";
 import { evaluate } from "./evaluateExpression.js";
 import { evaluateUnaryOperators } from "./evaluationFunctions.js";
@@ -15,16 +15,16 @@ const calculator = {
     historyShown: false,
     setValue(str) {
         clearError();
-        if(!isValidInput(str.at(-1))) return;
+        // if(!isValidInput(str.at(-1))) return;
 
-        this.inputString = str;
+        this.inputString = validateInput(this.inputString, str.at(-1));
         updateDisplay(this.inputString);
     },
     updateString(str) {
         clearError();
-        if(!isValidInput(str)) return;
+        // if(!isValidInput(str)) return;
         
-        this.inputString += (str || "");
+        this.inputString = validateInput(this.inputString, str);
         updateDisplay(this.inputString);
     },
     handleFunction(func) {

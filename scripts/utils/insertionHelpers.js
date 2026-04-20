@@ -3,22 +3,34 @@ import { operators, parenthesis } from "../modules/operatorReference.js";
 import { updateDisplay } from "./displayHandlers.js";
 import { showError } from "./errorHandlers.js";
 
-function isValidInput(char) {
+function validateInput(curr, str) {
     // If display has answer and operator is inserted continue the expression else restart new expression.
     if (calculator.displayHasAnswer) {
         calculator.displayHasAnswer = false;
-        if (!operators[char]) {
-            calculator.inputString = char;
-            updateDisplay(calculator.inputString);
-            return false;
+        if (!operators[str]) {
+            return str;
         }
     }
 
-    // Prevent multiple consecutive decimals and operators 
-    if (char === "." && calculator.inputString.at(-1) === ".") return false;
-    if (!(parenthesis.includes(char)) && (operators[calculator.inputString.at(-1)]?.precedence && operators[char]?.precedence)) return false;
+    if(curr.at(-1) ==="(" && operators[str]?.operands === 2){
+        showError("Cannot insert binary operator here");
+        return curr;
+    } 
+    else if (!isNaN(curr.at(-1)) && str === "("){
+        return curr + "*" + str;
+    }
+    else if (!isNaN(str) && curr.at(-1) === ")"){
+        return curr + "*" + str;
+    }
 
-    return true;
+    // Prevent multiple consecutive decimals and operators 
+    if (str === "." && curr.at(-1) === ".") return false;
+    if (!(parenthesis.includes(str)) && (operators[curr.at(-1)]?.precedence && operators[str]?.precedence)) {
+        console.log("here");
+        return curr.slice(0, -1) + str;
+    }
+
+    return curr + str;
 }
 
 function wrapLastElement(str, prefix, suffix) {
@@ -91,4 +103,4 @@ function getLastElement(str) {
     return [num, i];
 }
 
-export { wrapLastElement, getLastElement, isValidInput };
+export { wrapLastElement, getLastElement, validateInput };

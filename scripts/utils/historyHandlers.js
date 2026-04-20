@@ -4,13 +4,8 @@ function updateHistory(input, ans) {
     let data = localStorage.getItem("historyList");
     let items;
 
-    if (!data) {
-        calculatorElements.emptyMessage.style.display = "flex";
-        items = [];
-    } else {
-        calculatorElements.emptyMessage.style.display = "none";
-        items = JSON.parse(data);
-    }
+    calculatorElements.emptyMessage.style.display = "none";
+    items = JSON.parse(data);
 
     let newItem = {
         input,
