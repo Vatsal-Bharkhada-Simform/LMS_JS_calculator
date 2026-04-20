@@ -9,7 +9,7 @@ const calculatorElements = {
     historyDelete: document.querySelector(".history-delete"),
     emptyMessage: document.querySelector(".empty_message"),
     dropdownContainer: document.querySelector(".dropdown-container"),
-    invertTrigonometry: document.querySelector("#invert-trignometry"),
+    invertTrigonometry: document.querySelector("#invert-trigonometry"),
     trigonometryList: document.querySelector("#trigonometry-list"),
     invertButton: document.querySelector("#invert-function"),
     modeButtons: document.querySelector(".button-modes"),
