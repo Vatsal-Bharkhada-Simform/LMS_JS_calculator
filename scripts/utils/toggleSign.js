@@ -1,5 +1,3 @@
-import { operators } from "../modules/operatorReference.js";
-import { showError } from "./errorHandlers.js";
 import { getLastElement, wrapLastElement } from "./insertionHelpers.js";
 
 function toggleSign(str) {

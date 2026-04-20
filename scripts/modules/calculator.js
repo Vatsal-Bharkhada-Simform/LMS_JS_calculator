@@ -100,7 +100,7 @@ const calculator = {
     evaluateTrigonometricFunction(func, ans){
         this.inputString = func + "(" + ans + ")";
         if(!this.useRadian){
-            ans = (ans / 57.2958);
+            ans = (ans / (180 / Math.PI));
         }
         return evaluateUnaryOperators(func, ans);
     },

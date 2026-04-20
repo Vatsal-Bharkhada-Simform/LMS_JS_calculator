@@ -1,6 +1,5 @@
 import calculator from "../modules/calculator.js";
 import { operators, parenthesis } from "../modules/operatorReference.js";
-import { updateDisplay } from "./displayHandlers.js";
 import { showError } from "./errorHandlers.js";
 
 function validateInput(curr, str) {
