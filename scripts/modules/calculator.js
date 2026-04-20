@@ -5,7 +5,7 @@ import { validateInput, wrapLastElement } from "../utils/insertionHelpers.js";
 import toggleSign from "../utils/toggleSign.js";
 import { evaluate } from "./evaluateExpression.js";
 import { evaluateUnaryOperators } from "./evaluationFunctions.js";
-import { trigonometricFunctions } from "./operatorReference.js";
+import { specialParenthesis, trigonometricFunctions } from "./operatorReference.js";
 
 const calculator = {
     inputString: "",
@@ -38,8 +38,10 @@ const calculator = {
             let ans = evaluate(this.inputString);
             if (ans !== undefined) {
                 if(trigonometricFunctions.includes(func)){
+                    this.inputString = func + "(" + this.inputString + ")";
                     ans = this.evaluateTrigonometricFunction(func, ans);
                 } else {
+                    this.inputString = specialParenthesis[func][0] + this.inputString + specialParenthesis[func][1];
                     ans = evaluateUnaryOperators(func, ans);
                 }
 
@@ -98,7 +100,6 @@ const calculator = {
         elem.setAttribute("title", (`Using ${(elem.innerText === "DEG") ? "degrees" : "radians"}`));
     },
     evaluateTrigonometricFunction(func, ans){
-        this.inputString = func + "(" + ans + ")";
         if(!this.useRadian){
             ans = (ans / (180 / Math.PI));
         }

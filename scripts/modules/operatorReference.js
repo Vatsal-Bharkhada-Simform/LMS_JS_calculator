@@ -93,4 +93,11 @@ const parenthesis = ["(", ")", "|"];
 
 const trigonometricFunctions = ["sin", "cos", "tan", "asin", "acos", "atan"];
 
-export {operators, constants, parenthesis, trigonometricFunctions};
+const specialParenthesis = {
+    "round" : ["|", "|"], 
+    "abs" : ["|", "|"], 
+    "ceil" : ["⎡", "⎤"], 
+    "floor" : ["⎣", "⎦"]
+};
+
+export {operators, constants, parenthesis, trigonometricFunctions, specialParenthesis};
