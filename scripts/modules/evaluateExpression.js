@@ -1,6 +1,6 @@
 import { showError } from "../utils/errorHandlers.js";
 import { evaluateBinaryOperators, evaluateUnaryOperators } from "./evaluationFunctions.js";
-import { operators } from "./operatorReference.js";
+import { constants, operators } from "./operatorReference.js";
 import tokenizeExpression from "./tokenizeExpression.js";
 
 function evaluate(str) {                                                                // Based on the Shunting yard algorithm
@@ -34,6 +34,9 @@ function evaluate(str) {                                                        
                 oStack.push(temp);
             }
             hStack.push(tokens[i]);
+        }
+        else if (constants[tokens[i]]){
+            oStack.push(constants[tokens[i]]);
         }
     }
 
