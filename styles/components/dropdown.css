@@ -6,7 +6,6 @@
         display: inline-flex;
         align-items: center;
         gap: var(--gap-sm);
-        /* font-size: var(--text-sm); */
         background-color: var(--background-dark);
         color: inherit;
         padding: var(--padding-sm);
