@@ -1,4 +1,4 @@
-import { updateDisplay } from "../utils/displayHandlers.js";
+import { updateDisplay, updatePreview } from "../utils/displayHandlers.js";
 import { clearError, showError } from "../utils/errorHandlers.js";
 import { updateHistory } from "../utils/historyHandlers.js";
 import { isValidInput, wrapLastElement } from "../utils/insertionHelpers.js";
@@ -115,6 +115,7 @@ const calculator = {
         }
         updateHistory(this.inputString, ans);
         updateDisplay(ans);
+        updatePreview(this.inputString);
 
         this.displayHasAnswer = true;
         this.inputString = String(ans);

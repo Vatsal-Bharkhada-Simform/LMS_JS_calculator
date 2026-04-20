@@ -20,10 +20,9 @@
         }
     }
 
-    .body__error-screen{
+    .body__secondary-screen{
         height: 4rem;
-        font-size: var(--text-sm);
-        color: #ff5151;
+        font-size: var(--text-md);
     }
     
     .body__display{
@@ -46,7 +45,7 @@
         }
     }
 
-    .body__error-screen{
+    .body__secondary-screen{
         display: flex;
         justify-content: flex-end;
         align-items: center;

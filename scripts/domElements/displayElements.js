@@ -1,6 +1,6 @@
 const calculatorElements = {
     display: document.querySelector("#display"),
-    errorScreen: document.querySelector(".body__error-screen"),
+    secondaryScreen: document.querySelector(".body__secondary-screen"),
     buttonParent: document.querySelector(".body__buttons"),
     previewScreen: document.querySelector(".body__preview"),
     historyContainer: document.querySelector(".calculator__history"),
