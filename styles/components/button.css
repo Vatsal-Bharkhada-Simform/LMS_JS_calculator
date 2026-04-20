@@ -41,7 +41,8 @@
 
 .button-equals {
     background-color: var(--color-accent);
-    color: var(--color-text-muted);
+    color: var(--background-dark);
+    font-weight: 600;
 
     &:hover {
         filter: brightness(80%);
