@@ -20,14 +20,22 @@
                             </svg>
                         </button>
                     </div>
-                    <div class="body__error-screen">
+                    <div class="body__secondary-screen">
                         <!-- Text injected throuhg JavaScript -->
                     </div>
                     <div class="body__display">
-                        <input type="text" placeholder="0" name="query-string" class="display-input" id="display" autofocus autocomplete="false">
+                        <input type="text" placeholder="0" name="query-string" class="display-input" title="Display" id="display" autofocus>
                     </div>
-                    <div class="body__preview">
-                        <!-- Text injected throuhg JavaScript -->
+                    <div class="body__button-container button-modes">
+                        <button type="button" class="button-secondary" data-type="DEG" title="Toggle degree/Radian" aria-label="Toggle degree/Radian">DEG</button>
+                        <button type="button" class="button-secondary" data-type="FE" title="Show answer in regular notation" aria-label="Toggle regular/exponential notation">F</button>
+                    </div>
+                    <div class="body__button-container button-memory">
+                        <button type="button" class="button-secondary active" data-type="MC" title="Clear memory" disabled>MC</button>
+                        <button type="button" class="button-secondary" data-type="MR" title="Insert memory value" disabled>MR</button>
+                        <button type="button" class="button-secondary" data-type="M+" title="Add to memory value">M+</button>
+                        <button type="button" class="button-secondary" data-type="M-" title="Subtract from memory value">M-</button>
+                        <button type="button" class="button-secondary" data-type="MS" title="Store current value in memory">MS</button>
                     </div>
                 </div>
                 <div class="body__bottom">
@@ -47,15 +55,14 @@
                                 </span>
                             </button>
                             <div class="dropdown-options">
-                                <ul>
-                                    <li><button type="button" class="option">2<sup>nd</sup></button></li>
-                                    <li><button type="button" class="option">sin</button></li>
-                                    <li><button type="button" class="option">cos</button></li>
-                                    <li><button type="button" class="option">tan</button></li>
-                                    <li><button type="button" class="option">hyp</button></li>
-                                    <li><button type="button" class="option">sec</button></li>
-                                    <li><button type="button" class="option">csc</button></li>
-                                    <li><button type="button" class="option">cot</button></li>
+                                <ul id="trigonometry-list">
+                                    <li class="inverse-toggle"><button type="button" class="calculator-button" data-type="utility" data-display="invert" id="invert-trigonometry">2<sup>nd</sup></button></li>
+                                    <li><button type="button" class="calculator-button" data-type="function-post" data-display="sin">sin</button></li>
+                                    <li><button type="button" class="calculator-button" data-type="function-post" data-display="cos">cos</button></li>
+                                    <li><button type="button" class="calculator-button" data-type="function-post" data-display="tan">tan</button></li>
+                                    <li class="inverse-function"><button type="button" class="calculator-button" data-type="function-post" data-display="asin">asin</button></li>
+                                    <li class="inverse-function"><button type="button" class="calculator-button" data-type="function-post" data-display="acos">acos</button></li>
+                                    <li class="inverse-function"><button type="button" class="calculator-button" data-type="function-post" data-display="atan">atan</button></li>
                                 </ul>
                             </div>
                         </div>
@@ -73,58 +80,59 @@
                             </button>
                             <div class="dropdown-options">
                                 <ul>
-                                    <li><button type="button" class="option">&#9122;&#119909;&#9125;</button></li>
-                                    <li><button type="button" class="option">&#9123;&#119909;&#9126;</button></li>
-                                    <li><button type="button" class="option">&#9121;&#119909;&#9124;</button></li>
-                                    <li><button type="button" class="option">rand</button></li>
-                                    <li><button type="button" class="option">&rarr;dms</button></li>
-                                    <li><button type="button" class="option">&rarr;deg</button></li>
+                                    <li><button type="button" class="calculator-button" data-type="function-post" data-display="round">&#9122;&#119909;&#9125;</button></li>
+                                    <li><button type="button" class="calculator-button" data-type="function-post" data-display="floor">&#9123;&#119909;&#9126;</button></li>
+                                    <li><button type="button" class="calculator-button" data-type="function-post" data-display="ceil">&#9121;&#119909;&#9124;</button></li>
+                                    <li><button type="button" class="calculator-button" data-type="random" data-display="random" title="Enter a random number between 0 and 1">rand</button></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="body__buttons">
-                        <button data-Type="" data-Display="" class="calculator-button button-dark" type="button" aria-label="second function">2<sup>nd</sup></button>
-                        <button data-Type="constant" data-Display="π" class="calculator-button button-dark" type="button" aria-label="pi">π</button>
-                        <button data-Type="constant" data-Display="e" class="calculator-button button-dark" type="button" aria-label="euler number">e</button>
-                        <button data-Type="action" data-Display="clearDisplay" class="calculator-button button-dark" type="button" aria-label="clear">C</button>
-                        <button data-Type="action" data-Display="clear" class="calculator-button button-dark" type="button" aria-label="delete"><svg class="u-icon"><use href="./assets/icons/sprite.svg#delete"></use></svg></button>
+                        <button id="invert-function" data-type="utility" data-display="" class="calculator-button button-dark" type="button" aria-label="second function">2<sup>nd</sup></button>
+                        <button data-type="constant" data-display="π" class="calculator-button button-dark" type="button" aria-label="pi">π</button>
+                        <button data-type="constant" data-display="e" class="calculator-button button-dark" type="button" aria-label="euler number">e</button>
+                        <button data-type="action" data-display="clearDisplay" class="calculator-button button-dark" type="button" aria-label="clear">C</button>
+                        <button data-type="action" data-display="clear" class="calculator-button button-dark" type="button" aria-label="delete"><svg class="u-icon"><use href="./assets/icons/sprite.svg#delete"></use></svg></button>
 
-                        <button data-Type="function" data-Display="^2"  class="calculator-button button-dark" type="button" aria-label="square">x²</button>
-                        <button data-Type="function-pre" data-Display="1/(" class="calculator-button button-dark" type="button" aria-label="reciprocal">1/x</button>
-                        <button data-Type="function-post" data-Display="|" class="calculator-button button-dark" type="button" aria-label="ceiling">|x|</button>
-                        <button data-Type="function-pre" data-Display="*10^" class="calculator-button button-dark" type="button" aria-label="exponential">exp</button>
-                        <button data-Type="function" data-Display="%" class="calculator-button button-dark" type="button" aria-label="modulo">mod</button>
+                        <button data-type="function" data-display="^2"  class="calculator-button button-dark default" type="button" aria-label="square">x²</button>
+                        <button data-type="function" data-display="^3"  class="calculator-button button-dark inverse" type="button" aria-label="cube">x³</button>
+                        <button data-type="function-pre" data-display="1/(" class="calculator-button button-dark" type="button" aria-label="reciprocal">1/x</button>
+                        <button data-type="function-post" data-display="abs" class="calculator-button button-dark" type="button" aria-label="absolute value">|x|</button>
+                        <button data-type="function" data-display="*10^" class="calculator-button button-dark" type="button" aria-label="exponential">exp</button>
+                        <button data-type="function" data-display="%" class="calculator-button button-dark" type="button" aria-label="modulo">mod</button>
 
-                        <button data-Type="function-pre" data-Display="√(" class="calculator-button button-dark" type="button" aria-label="square root">√x</button>
-                        <button data-Type="operator" data-Display="(" class="calculator-button button-dark" type="button" aria-label="open bracket">(</button>
-                        <button data-Type="operator" data-Display=")" class="calculator-button button-dark" type="button" aria-label="close bracket">)</button>
-                        <button data-Type="function" data-Display="!" class="calculator-button button-dark" type="button" aria-label="factorial">x!</button>
-                        <button data-Type="operator" data-Display="/" class="calculator-button button-dark" type="button" aria-label="divide">&divide;</button>
+                        <button data-type="function-pre" data-display="²√(" class="calculator-button button-dark default" type="button" aria-label="square root">²√x</button>
+                        <button data-type="function-pre" data-display="³√(" class="calculator-button button-dark inverse" type="button" aria-label="cube root">³√x</button>
+                        <button data-type="operator" data-display="(" class="calculator-button button-dark" type="button" aria-label="open bracket">(</button>
+                        <button data-type="operator" data-display=")" class="calculator-button button-dark" type="button" aria-label="close bracket">)</button>
+                        <button data-type="function" data-display="!" class="calculator-button button-dark" type="button" aria-label="factorial">x!</button>
+                        <button data-type="operator" data-display="/" class="calculator-button button-dark" type="button" aria-label="divide">&divide;</button>
 
-                        <button data-Type="function" data-Display="^" class="calculator-button button-dark" type="button" aria-label="power">xʸ</button>
-                        <button data-Type="digit" data-Display="7" class="calculator-button" type="button" aria-label="seven">7</button>
-                        <button data-Type="digit" data-Display="8" class="calculator-button" type="button" aria-label="eight">8</button>
-                        <button data-Type="digit" data-Display="9" class="calculator-button" type="button" aria-label="nine">9</button>
-                        <button data-Type="operator" data-Display="*" class="calculator-button button-dark" type="button" aria-label="multiply">&times;</button>
+                        <button data-type="function" data-display="^" class="calculator-button button-dark" type="button" aria-label="power">xʸ</button>
+                        <button data-type="digit" data-display="7" class="calculator-button" type="button" aria-label="seven">7</button>
+                        <button data-type="digit" data-display="8" class="calculator-button" type="button" aria-label="eight">8</button>
+                        <button data-type="digit" data-display="9" class="calculator-button" type="button" aria-label="nine">9</button>
+                        <button data-type="operator" data-display="*" class="calculator-button button-dark" type="button" aria-label="multiply">&times;</button>
 
-                        <button data-Type="function-pre" data-Display="10^" class="calculator-button button-dark" type="button" aria-label="ten power">10ˣ</button>
-                        <button data-Type="digit" data-Display="4" class="calculator-button" type="button" aria-label="four">4</button>
-                        <button data-Type="digit" data-Display="5" class="calculator-button" type="button" aria-label="five">5</button>
-                        <button data-Type="digit" data-Display="6" class="calculator-button" type="button" aria-label="six">6</button>
-                        <button data-Type="operator" data-Display="-" class="calculator-button button-dark" type="button" aria-label="subtract">&minus;</button>
+                        <button data-type="function-pre" data-display="10^" class="calculator-button button-dark default" type="button" aria-label="ten power">10ˣ</button>
+                        <button data-type="function-pre" data-display="2^" class="calculator-button button-dark inverse" type="button" aria-label="two power">2ˣ</button>
+                        <button data-type="digit" data-display="4" class="calculator-button" type="button" aria-label="four">4</button>
+                        <button data-type="digit" data-display="5" class="calculator-button" type="button" aria-label="five">5</button>
+                        <button data-type="digit" data-display="6" class="calculator-button" type="button" aria-label="six">6</button>
+                        <button data-type="operator" data-display="-" class="calculator-button button-dark" type="button" aria-label="subtract">&minus;</button>
 
-                        <button data-Type="function-pre" data-Display="log(" class="calculator-button button-dark" type="button" aria-label="log base 10">log</button>
-                        <button data-Type="digit" data-Display="1" class="calculator-button" type="button" aria-label="one">1</button>
-                        <button data-Type="digit" data-Display="2" class="calculator-button" type="button" aria-label="two">2</button>
-                        <button data-Type="digit" data-Display="3" class="calculator-button" type="button" aria-label="three">3</button>
-                        <button data-Type="operator" data-Display="+" class="calculator-button button-dark" type="button" aria-label="add">&plus;</button>
+                        <button data-type="function-pre" data-display="log(" class="calculator-button button-dark" type="button" aria-label="log base 10">log</button>
+                        <button data-type="digit" data-display="1" class="calculator-button" type="button" aria-label="one">1</button>
+                        <button data-type="digit" data-display="2" class="calculator-button" type="button" aria-label="two">2</button>
+                        <button data-type="digit" data-display="3" class="calculator-button" type="button" aria-label="three">3</button>
+                        <button data-type="operator" data-display="+" class="calculator-button button-dark" type="button" aria-label="add">&plus;</button>
 
-                        <button data-Type="function-pre" data-Display="ln(" class="calculator-button button-dark" type="button" aria-label="natural log">ln</button>
-                        <button data-Type="sign-toggle" data-Display="" class="calculator-button" type="button" aria-label="toggle sign">±</button>
-                        <button data-Type="digit" data-Display="0" class="calculator-button" type="button" aria-label="zero">0</button>
-                        <button data-Type="digit" data-Display="." class="calculator-button" type="button" aria-label="decimal">.</button>
-                        <button data-Type="action" data-Display="equals" class="calculator-button button-equals" type="button" aria-label="equals">&equals;</button>
+                        <button data-type="function-pre" data-display="ln(" class="calculator-button button-dark" type="button" aria-label="natural log">ln</button>
+                        <button data-type="sign-toggle" data-display="+/-" class="calculator-button" type="button" aria-label="toggle sign">±</button>
+                        <button data-type="digit" data-display="0" class="calculator-button" type="button" aria-label="zero">0</button>
+                        <button data-type="digit" data-display="." class="calculator-button" type="button" aria-label="decimal">.</button>
+                        <button data-type="action" data-display="equals" class="calculator-button button-equals" type="button" aria-label="equals">&equals;</button>
                     </div>
                 </div>
             </section>
@@ -143,7 +151,7 @@
                 <div class="history__wrapper">
                     <ul class="history__list">
                         <li class="empty_message">
-                            <img src="./assets/images/empty.jpg" alt="Empty box image" aria-hidden="true" width="60%" />
+                            <img src="./assets/images/empty.jpg" alt="Empty box image" aria-hidden="true">
                             Nothing to show
                         </li>
                     </ul>

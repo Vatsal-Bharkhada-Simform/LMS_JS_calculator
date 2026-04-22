@@ -34,9 +34,10 @@
                 justify-content: center;
                 align-items: center;
                 background-color: inherit;
-                color: var(--color-text-muted);
+                color: var(--color-text-light);
 
                 img {
+                    width: 60%;
                     mix-blend-mode: screen;
                     filter: invert(100%) grayscale() brightness(180%);
                 }

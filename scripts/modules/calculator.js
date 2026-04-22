@@ -1,57 +1,35 @@
-import calculatorElements from "../domElements/displayElements.js";
-import { updateDisplay } from "../utils/displayHandlers.js";
+import { updateDisplay, updatePreview } from "../utils/displayHandlers.js";
 import { clearError, showError } from "../utils/errorHandlers.js";
+import { updateHistory } from "../utils/historyHandlers.js";
+import { validateInput, wrapLastElement } from "../utils/insertionHelpers.js";
 import toggleSign from "../utils/toggleSign.js";
 import { evaluate } from "./evaluateExpression.js";
 import { evaluateUnaryOperators } from "./evaluationFunctions.js";
-import { operators, parenthesis } from "./operatorReference.js";
+import { specialParenthesis, trigonometricFunctions } from "./operatorReference.js";
 
 const calculator = {
     inputString: "",
     displayHasAnswer: false,
+    useRadian: false,
+    showScientificNotation: false,
     historyShown: false,
     setValue(str) {
         clearError();
-        if (this.displayHasAnswer) {
-            this.displayHasAnswer = false;
-            if(!operators[str]) {
-                this.inputString = str;
-                updateDisplay(this.inputString);
-                return;
-            }
-        }
-        if(str.at(-1) === "." && this.inputString.at(-1) === ".") return;
-        this.inputString = str;
+        // if(!isValidInput(str.at(-1))) return;
+
+        this.inputString = validateInput(this.inputString, str.at(-1));
         updateDisplay(this.inputString);
     },
     updateString(str) {
         clearError();
-        if (this.displayHasAnswer) {
-            this.displayHasAnswer = false;
-            if(!operators[str]) {
-                this.inputString = str;
-                updateDisplay(this.inputString);
-                return;
-            }
-        }
-        if(str === "." && this.inputString.at(-1) === ".") return;
-        if(!(parenthesis.includes(str)) && (operators[this.inputString.at(-1)] && operators[str])) return;
-        this.inputString += (str || "");
+        // if(!isValidInput(str)) return;
+        
+        this.inputString = validateInput(this.inputString, str);
         updateDisplay(this.inputString);
     },
     handleFunction(func) {
-        let num = "";
-        let i = this.inputString.length - 1;
-        let hasParenthesis = func.includes("(");
-        while ((this.inputString[i] >= "0" && this.inputString[i] <= "9") || this.inputString[i] === ".") {
-            num = this.inputString[i] + num;
-            i--;
-        }
-        if(isNaN(+num)) {
-            showError("Error in wrapping function.");
-            return;
-        }
-        this.inputString = this.inputString.slice(0, i + 1) + func + this.inputString.slice(i + 1) + ((hasParenthesis && num !== "") ? ")" : "");
+        let hasParenthesis = func.includes("(") && this.inputString;
+        this.inputString = wrapLastElement(this.inputString, func, hasParenthesis && ")");
         updateDisplay(this.inputString);
     },
     handlePostFunction(func){
@@ -59,31 +37,50 @@ const calculator = {
         try {
             let ans = evaluate(this.inputString);
             if (ans !== undefined) {
-                ans = evaluateUnaryOperators(func, ans);
+                if(trigonometricFunctions.includes(func)){
+                    this.inputString = func + "(" + this.inputString + ")";
+                    ans = this.evaluateTrigonometricFunction(func, ans);
+                } else {
+                    this.inputString = specialParenthesis[func][0] + this.inputString + specialParenthesis[func][1];
+                    ans = evaluateUnaryOperators(func, ans);
+                }
 
-                this.updateHistory(this.inputString, ans);
-                updateDisplay(ans);
+                if((!ans && ans !== 0) || isNaN(ans)){
+                    throw new SyntaxError("Error while evaluating function");
+                } else {
+                    this.handleDisplayAnswer(ans);
+                }
             }
-            this.displayHasAnswer = true;
-            this.inputString = String(ans);
         } catch (err) {
             showError(err.message);
         }
     },
     handleSignToggle() {
+        if(!this.inputString) return;
         this.inputString = toggleSign(this.inputString);
         updateDisplay(this.inputString);
     },
     handleAction(action) {
         clearError();
-        if (action === "clearDisplay") {
-            this.inputString = "";
-            updateDisplay(this.inputString);
-        } else if (action === "clear") {
-            this.inputString = this.inputString.slice(0, -1);
-            updateDisplay(this.inputString);
-        } else if (action === "equals") {
-            this.calculateAnswer();
+
+        switch (action){
+            case "clearDisplay":
+            case "Escape":
+                this.inputString = "";
+                updateDisplay(this.inputString);
+                break;
+            
+            case "clear":
+            case "Backspace":
+                this.inputString = this.inputString.slice(0, -1);
+                updateDisplay(this.inputString);
+                break;
+
+            case "equals":
+            case "=":
+            case "Enter":
+                this.calculateAnswer();
+                break;
         }
     },
     calculateAnswer() {
@@ -91,78 +88,38 @@ const calculator = {
         try {
             let ans = evaluate(this.inputString);
             if (ans !== undefined) {
-                this.updateHistory(this.inputString, ans);
-                updateDisplay(ans);
+                this.handleDisplayAnswer(ans);
             }
-            this.displayHasAnswer = true;
-            this.inputString = String(ans);
         } catch (err) {
             showError(err.message);
         }
     },
-    updateHistory(input, ans) {
-        let data = localStorage.getItem("historyList");
-        let items;
-
-        if (!data) {
-            calculatorElements.emptyMessage.style.display = "flex";
-            items = [];
-        } else {
-            calculatorElements.emptyMessage.style.display = "none";
-            items = JSON.parse(data);
-        }
-
-        let newItem = {
-            input,
-            ans
-        };
-
-        items.push(newItem);
-
-        localStorage.setItem("historyList", JSON.stringify(items));
-
-        // Add new entry to history list
-        let listItem = document.createElement("li");
-
-        let query = document.createElement("span");
-        let answer = document.createElement("span");
-
-        query.innerText = input;
-        answer.innerText = ans;
-
-        listItem.append(query, answer);
-
-        calculatorElements.historyList.prepend(listItem);
-        return;
+    toggleUseRadian(elem){
+        this.useRadian = !this.useRadian;
+        elem.innerText = (elem.innerText === "DEG") ? "RAD" : "DEG";
+        elem.setAttribute("title", (`Using ${(elem.innerText === "DEG") ? "degrees" : "radians"}`));
     },
-    loadHistory() {
-        let data = localStorage.getItem("historyList");
-        if (!data || data === "[]") {
-            localStorage.setItem("historyList", "[]");
-            calculatorElements.emptyMessage.style.display = "flex";
-            return;
+    evaluateTrigonometricFunction(func, ans){
+        if(!this.useRadian){
+            ans = (ans / (180 / Math.PI));
         }
-        calculatorElements.emptyMessage.style.display = "none";
-
-        let historyList = JSON.parse(data).reverse();
-
-        let listItems = new DocumentFragment();
-
-        for (let item of historyList) {
-            let listItem = document.createElement("li");
-
-            let query = document.createElement("span");
-            let answer = document.createElement("span");
-
-            query.innerText = item?.input;
-            answer.innerText = item?.ans;
-
-            listItem.append(query, answer);
-
-            listItems.append(listItem);
+        return evaluateUnaryOperators(func, ans);
+    },
+    toggleNotation(elem){
+        this.showScientificNotation = !this.showScientificNotation;
+        elem.innerText = (elem.innerText === "F" ? "E" : "F");
+        elem.setAttribute("title", (`Showing answer in ${(elem.innerText === "F") ? "regular" : "scientific"} notation`));
+    },
+    handleDisplayAnswer(ans){
+        if(this.showScientificNotation){
+            ans = Number(ans).toExponential();
         }
+        updateHistory(this.inputString, ans);
+        updateDisplay(ans);
+        updatePreview(this.inputString);
 
-        calculatorElements.historyList.append(listItems);
+        this.displayHasAnswer = true;
+        this.inputString = String(ans);
     }
 }
 

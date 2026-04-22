@@ -23,7 +23,11 @@ const operators = {
         precedence: 3,
         operands: 2
     },
-    "√": {
+    "²√": {
+        precedence: 4,
+        operands: 1,
+    },
+    "³√": {
         precedence: 4,
         operands: 1,
     },
@@ -35,13 +39,33 @@ const operators = {
         precedence: 5,
         operands: 1,
     },
+    "sin": {
+        precedence: 5,
+        operands: 1,
+    },
+    "cos": {
+        precedence: 5,
+        operands: 1,
+    },
+    "tan": {
+        precedence: 5,
+        operands: 1,
+    },
+    "asin": {
+        precedence: 5,
+        operands: 1,
+    },
+    "acos": {
+        precedence: 5,
+        operands: 1,
+    },
+    "atan": {
+        precedence: 5,
+        operands: 1,
+    },
     "|": {
         precedence: 6,
         operands: 1,
-    },
-    "UP": {
-        precedence: 7,
-        operands: 1
     },
     "UM": {
         precedence: 7,
@@ -67,4 +91,13 @@ const constants = {
 }
 const parenthesis = ["(", ")", "|"];
 
-export {operators, constants, parenthesis};
+const trigonometricFunctions = ["sin", "cos", "tan", "asin", "acos", "atan"];
+
+const specialParenthesis = {
+    "round" : ["|", "|"], 
+    "abs" : ["|", "|"], 
+    "ceil" : ["⎡", "⎤"], 
+    "floor" : ["⎣", "⎦"]
+};
+
+export {operators, constants, parenthesis, trigonometricFunctions, specialParenthesis};

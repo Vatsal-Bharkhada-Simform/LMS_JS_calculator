@@ -7,10 +7,6 @@
         display: flex;
         gap: var(--gap-sm);
         padding: var(--padding-sm) 0;
-
-        .dropdown-options{
-            display: none;
-        }
     }
 
     .body__buttons{
@@ -26,6 +22,25 @@
         button {
             min-width: 0;
             overflow: hidden;
+        }
+
+        .active{
+            background-color: var(--color-accent);
+            color: var(--background-dark);
+        }
+
+        .inverse{
+            display: none;
+        }
+    }
+
+    .show-inverse{
+        .inverse{
+            display: block;
+        }
+
+        .default{
+            display: none;
         }
     }
 }
