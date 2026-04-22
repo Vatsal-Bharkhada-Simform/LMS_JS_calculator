@@ -14,10 +14,10 @@ const calculatorElements = {
     invertButton: document.querySelector("#invert-function"),
     modeButtons: document.querySelector(".button-modes"),
     memoryButtons: document.querySelector(".button-memory"),
-    memoryClear: document.querySelector("[data-Type='MC']"),
-    memoryRead: document.querySelector("[data-Type='MR']"),
-    degreeButton: document.querySelector("[data-Type='DEG']"),
-    notationButton: document.querySelector("[data-Type='FE']"),
+    memoryClear: document.querySelector("[data-type='MC']"),
+    memoryRead: document.querySelector("[data-type='MR']"),
+    degreeButton: document.querySelector("[data-type='DEG']"),
+    notationButton: document.querySelector("[data-type='FE']"),
 }
 
 Object.freeze(calculatorElements);

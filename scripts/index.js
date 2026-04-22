@@ -11,15 +11,15 @@ loadHistory();
 // Listen for click events on buttons.
 calculatorElements.buttonParent.addEventListener("click", (e) => {
     handleInsertion(
-        e.target.getAttribute("data-Type"), 
-        e.target.getAttribute("data-Display")
+        e.target.getAttribute("data-type"), 
+        e.target.getAttribute("data-display")
     );
 });
 
 calculatorElements.dropdownContainer.addEventListener("click", (e) => {
     handleInsertion(
-        e.target.getAttribute("data-Type"), 
-        e.target.getAttribute("data-Display")
+        e.target.getAttribute("data-type"), 
+        e.target.getAttribute("data-display")
     );
 });
 
